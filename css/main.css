@@ -1,0 +1,271 @@
+/* 
+Copyright © 2020 Ribbon Communications Operating Company, Inc. (“Ribbon”).
+All rights reserved. Use of this media and its contents is subject to the 
+terms and conditions of the applicable end user or software license 
+agreement, right to use notice, and all relevant copyright protections.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+*/
+
+/* @file main.css */
+.hide {
+    display: none;
+}
+
+.invisible {
+    visibility: hidden;
+}
+
+header {
+    padding: 8px 15px;
+    position: relative;
+    z-index: 99;
+}
+
+header .logo {
+    width: 20px;
+    margin: 8px 10px 8px 0px;
+}
+
+header a.btn.btn-link {
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0;
+}
+
+.pad-top {
+    margin-top: 10px;
+}
+
+.pad-bottom {
+    margin-bottom: 10px;
+}
+
+.container .panel .panel-body.av-box {
+    height: calc(100vh - 242px);
+    padding: 0 0;
+}
+
+.container .panel .panel-title {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.container .column .av-box-content {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container .column .av-box-content.av-box-inset {
+    height: 20vh;
+    width: 20vh;
+    position: absolute;
+    right: 20px;
+    bottom: 135px;
+}
+
+.container .column .aver {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container .column .aver>i {
+    font-size: 12vh;
+}
+
+.to-right {
+    float: right;
+}
+
+.to-left {
+    float: left;
+}
+
+.toast .btn-clear {
+    margin: auto;
+}
+
+.toast {
+    border-radius: unset;
+    font-size: small;
+    padding-left: 15px;
+}
+
+#splash .toast {
+    position: absolute;
+}
+
+#dashboard .panel .panel-nav .toast {
+    position: absolute;
+    width: calc(100% - 18px);
+}
+
+.mdl-shadow--2dp {
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .14), 0 3px 1px -2px rgba(0, 0, 0, .2), 0 1px 5px 0 rgba(0, 0, 0, .12);
+}
+
+.mdl-layout-title {
+    display: block;
+    position: relative;
+    font-size: 20px;
+    line-height: 1;
+    letter-spacing: .02em;
+    font-weight: 400;
+    box-sizing: border-box;
+}
+
+.mdl-button:hover {
+    background-color: rgba(158, 158, 158, .2)
+}
+
+#agent_panel .panel .panel-footer {
+    height: 68px;
+}
+
+footer {
+    padding: 10px 20px;
+    position: relative;
+}
+
+footer .note {
+    font-size: small;
+}
+
+.panel .description {
+    color: grey;
+    font-size: small;
+    padding: 10px 0 5px 0;
+}
+
+.box-avail-ht {
+    height: calc(100vh - 96px);
+}
+
+.box-full-ht {
+    height: 100vh;
+}
+
+.box-center-vh {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pos-br {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+#dialpad_modal .modal-body .column button {
+    width: 100%;
+    width: -moz-available;
+    width: -webkit-fill-available;
+    width: fill-available;
+}
+
+#dialpad_modal .modal-body .columns {
+    margin-bottom: 5px;
+}
+
+#dialpad_modal .modal-body .columns .column {
+    padding-left: .2rem;
+    padding-right: .2rem;
+}
+
+#dialpad_modal .display-box {
+    border-radius: 3px;
+    border-width: 1px;
+    border-style: solid;
+    font-size: 26px;
+    margin-bottom: 10px;
+    height: 40px;
+    overflow: hidden;
+}
+
+#dialpad_modal .display-txt {
+    float: right;
+}
+
+#dashboard.container {
+    overflow: scroll;
+}
+
+#dialpad_modal .btn.dialpad-key {
+    height: 46px;
+}
+
+#dialpad_modal .btn.dialpad-key sub {
+    display: block;
+    font-size: 10px;
+}
+
+#dialpad_modal .btn.dialpad-del {
+    height: 40px;
+    padding-top: 7px;
+}
+
+#splash .app-loader img {
+    width: 100px;
+}
+
+#splash .app-loader .caption {
+    position: fixed;
+    font-size: 10px;
+    text-transform: uppercase;
+    margin-top: 36px;
+}
+
+#splash .app-loader .symbol {
+    position: fixed;
+    height: 64px;
+}
+
+.rtl {
+    text-align: right;
+}
+
+.ltr {
+    text-align: left;
+}
+
+/* Animations */
+@keyframes blink {
+    50% {
+        opacity: 0.5;
+    }
+}
+
+.blink {
+    animation: blink 3s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        animation-timing-function: cubic-bezier(0.5856, 0.0703, 0.4143, 0.9297);
+        transform: rotate(0)
+    }
+
+    100% {
+        transform: rotate(360deg)
+    }
+}
+
+.spin {
+    animation: spin 1s linear infinite;
+}
