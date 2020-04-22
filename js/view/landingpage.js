@@ -68,7 +68,11 @@ export class LandingPage {
     }
     if (isValid) {
       if (customParams.length > 0) {
-        Model.callOptions.customParameters = [...Model.callOptions.customParameters, ...customParams]
+        if (!!Model.callOptions.customParameters) {
+          Model.callOptions.customParameters = [...Model.callOptions.customParameters, ...customParams]
+        } else {
+          Model.callOptions.customParameters = customParams
+        }
       }
       this.proceed()
     } else {
