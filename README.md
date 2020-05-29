@@ -23,10 +23,12 @@ For more information, please refer
 
 ## Compatibility
 
-| Browsers      | Versions              | Operating Systems       |
-|---------------|-----------------------|-------------------------|
-| Chrome        | Last 3 Major Versions | Windows, MacOS, Android |
-| Firefox       | Last 3 Major Versions | Windows, MacOS          |
-| Edge Chromium | Latest Major Version  | Windows, MacOS          |
-| Safari        | Latest Major Version  | MacOS, iOS              |
-| Opera         | Last 3 Major Version  | Windows, MacOS          |
+| Browsers      | Operating Systems       |
+|---------------|-------------------------|
+| Chrome        | Windows, MacOS, Android |
+| Firefox       | Windows, MacOS          |
+| Edge Chromium | Windows, MacOS          |
+| Safari        | MacOS, iOS              |
+| Opera         | Windows, MacOS          |
+
+Subject to the capabilities and limitations of the browser, Operating System, Kandy Anonymous CallMe JavaScript SDK, and destination to which an anonymous call is connected. Please refer to the Kandy Anonymous CallMe JavaScript SDK for applicable SDK limitations for each browser.

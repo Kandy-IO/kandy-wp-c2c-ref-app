@@ -236,6 +236,8 @@ export class CallPanel {
     this.aver.initialize()
     this.toast.initialize()
 
+    this.acoustic.trial()
+
     this.activate()
     this.defaultState()
 

@@ -8,14 +8,14 @@
         - [1.1.2. Getting started](#112-getting-started)
             - [1.1.2.1. Development environment](#1121-development-environment)
             - [1.1.2.2. Third party libraries](#1122-third-party-libraries)
-            - [1.1.2.3. Resolving dependency](#1123-resolving-dependency)
-            - [1.1.2.4. Add in `<head>` of HTML file](#1124-add-in-head-of-html-file)
-            - [1.1.2.5. Add in `<body>` of HTML file](#1125-add-in-body-of-html-file)
-            - [1.1.2.6. Installation of SDK](#1126-installation-of-sdk)
-            - [1.1.2.7. Prerequisite](#1127-prerequisite)
-            - [1.1.2.8. Build](#1128-build)
-            - [1.1.2.9. Deploy](#1129-deploy)
-            - [1.1.2.10. Usage](#11210-usage)
+                - [1.1.2.2.1. Resolving dependency](#11221-resolving-dependency)
+                    - [1.1.2.2.1.1. Add in `<head>` of HTML file](#112211-add-in-head-of-html-file)
+                    - [1.1.2.2.1.2. Add in `<body>` of HTML file](#112212-add-in-body-of-html-file)
+            - [1.1.2.3. Installation of SDK](#1123-installation-of-sdk)
+            - [1.1.2.4. Prerequisite](#1124-prerequisite)
+            - [1.1.2.5. Build](#1125-build)
+            - [1.1.2.6. Deploy](#1126-deploy)
+            - [1.1.2.7. Usage](#1127-usage)
         - [1.1.3. Configurations](#113-configurations)
             - [1.1.3.1. ACTG](#1131-actg)
             - [1.1.3.2. Brand](#1132-brand)
@@ -80,11 +80,11 @@ Here, tilde/caret symbol prefixed in the version means
 
 For more detail, please refer [Semantic Versioning Cheatsheet](https://bytearcher.com/goodies/semantic-versioning-cheatsheet/).
 
-#### 1.1.2.2.1. Resolving dependency
+##### 1.1.2.2.1. Resolving dependency
 
 The dependencies of third party libraries can be resolved in HTML file by using the `<link>` & `<script>` tags.
 
-#### 1.1.2.2.1.1. Add in `<head>` of HTML file
+###### 1.1.2.2.1.1. Add in `<head>` of HTML file
 
 Add below statements in the `<head>` of `index.html` of webapp to resolve dependencies of `material-design-icons` & `spectre.css` libraries.
 
@@ -102,7 +102,7 @@ Add below statements in the `<head>` of `index.html` of webapp to resolve depend
 <link rel="stylesheet" type="text/css" href="https://unpkg.com/spectre.css/dist/spectre-icons.min.css">
 ```
 
-#### 1.1.2.2.1.2. Add in `<body>` of HTML file
+###### 1.1.2.2.1.2. Add in `<body>` of HTML file
 
 Add below statements in the `<body>` of `index.html` of webapp to resolve dependencies of `jquery` & `is_js` libraries.
 

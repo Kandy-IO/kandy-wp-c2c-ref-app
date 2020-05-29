@@ -73,6 +73,7 @@ export class Acoustic {
       if (fid != null) {
         this.audio.src = 'aud/dtmf' + fid + '.wav'
         this.audio.type = 'audio/wav'
+        this.audio.muted = false
         this.play()
       }
     }
@@ -85,6 +86,19 @@ export class Acoustic {
       this.audio.src = 'aud/ringout.wav'
       this.audio.type = 'audio/wav'
       this.audio.loop = true
+      this.audio.muted = false
+      this.play()
+    }
+  }
+  /**
+   * This function plays the muted ringtone for trial.
+   */
+  trial() {
+    if (this.enabled) {
+      console.log('Acoustic.trial')
+      this.audio.src = 'aud/dtmfStar.wav'
+      this.audio.type = 'audio/wav'
+      this.audio.muted = true
       this.play()
     }
   }

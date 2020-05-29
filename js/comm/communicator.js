@@ -188,10 +188,26 @@ export class Communicator {
             case 'RENEGOTIATE':
               if (this.callPanel.localScreen.isSharing) {
                 this.callPanel.localScreen.isSharing = false
+                if (this.callPanel.localVideo.wasStreamed) {
+                  this.callPanel.localScreen.wasShared = true
+                  this.callPanel.localVideo.willStream = true
+                }
                 this.callPanel.control.callCamera.enable()
                 this.callPanel.control.callScreenshare.enable()
                 this.callPanel.control.callScreenshare.setState(true)
                 this.callPanel.toast.info(Model.i18n.alertScreensharingStopped, 1)
+              }
+              if (this.callPanel.localVideo.willStream && this.callPanel.localScreen.wasShared) {
+                this.client.call.addMedia(this.callId, {
+                  video: true,
+                  videoOptions: {
+                    deviceId: this.client.media.getDevices().camera.id
+                  }
+                })
+                this.callPanel.localVideo.willStream = false
+                this.callPanel.localVideo.isStreaming = true
+                this.callPanel.control.callCamera.setState(false)
+                this.callPanel.toast.info(Model.i18n.alertCameraOn, 1)
               }
               break
             case 'MAKE':
@@ -258,8 +274,10 @@ export class Communicator {
     console.log('Communicator.onCallNewTrack, params:', params)
     if (params.callId == this.callId) {
       const call = this.client.call.getById(params.callId)
-      const avBox = params.local ? this.callPanel.guestAVBoxId : this.callPanel.agentAVBoxId
-      this.client.media.renderTracks([params.trackId], avBox)
+      if (call.state != 'Ringing' && call.state != 'Initiated' && call.state != 'Initiating') {
+        const avBox = params.local ? this.callPanel.guestAVBoxId : this.callPanel.agentAVBoxId
+        this.client.media.renderTracks([params.trackId], avBox)
+      }
     }
   }
   onCallTrackReplaced(params) {
@@ -293,11 +311,19 @@ export class Communicator {
           this.callPanel.onChangeTelephonyState(this.callPanel.TELEPHONYSTATE_RINGING)
           break
         case this.client.call.states.EARLY_MEDIA:
-          console.log('Communicator.onCallStateChange, EARLY_MEDIA')
+          console.log('Communicator.onCallStateChange, EARLY_MEDIA', call)
           this.callStateHistory.push(call.state)
           this.callPanel.toast.info(Model.i18n.alertCallEarlyMedia, 1)
           this.callPanel.onChangeTelephonyState(this.callPanel.TELEPHONYSTATE_EARLYMEDIA)
+          if (call.remoteTracks) {
+            call.remoteTracks.forEach(t => {
+              let track = this.client.media.getTrackById(t)
+              console.log('Communicator.onCallStateChange, Early Media, remoteTrack:', track, 'trackId:', t)
+              this.client.media.renderTracks([t], this.callPanel.agentAVBoxId)
+            })
+          }
           this.callPanel.aver.reset()
+          this.callPanel.agentAVBox.show()
           break
         case this.client.call.states.CANCELLED:
           console.log('Communicator.onCallStateChange, CANCELLED')
