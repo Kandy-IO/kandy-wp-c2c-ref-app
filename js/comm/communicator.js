@@ -158,6 +158,9 @@ export class Communicator {
             case 'ADD_MEDIA':
               this.callPanel.control.callCamera.enable()
               this.callPanel.control.callScreenshare.enable()
+              if (this.callPanel.localScreen.isSharing && this.callPanel.localVideo.wasStreamed) {
+                this.callPanel.control.callCamera.disable()
+              }
               break
             case 'REMOVE_MEDIA':
               this.callPanel.control.callCamera.enable()
@@ -171,18 +174,26 @@ export class Communicator {
                 })
                 this.callPanel.localVideo.willStream = false
                 this.callPanel.localVideo.isStreaming = true
+                this.callPanel.localVideo.wasStreamed = false
                 this.callPanel.control.callCamera.setState(false)
                 this.callPanel.toast.info(Model.i18n.alertCameraOn, 1)
-              }
-              if (this.callPanel.localScreen.willShare && this.callPanel.localVideo.wasStreamed) {
+              } else if (this.callPanel.localScreen.willShare && this.callPanel.localVideo.wasStreamed) {
                 this.client.call.addMedia(this.callId, {
                   video: false,
                   screen: true
                 })
                 this.callPanel.localScreen.willShare = false
                 this.callPanel.localScreen.isSharing = true
+                this.callPanel.localScreen.wasShared = false
                 this.callPanel.control.callScreenshare.setState(false)
                 this.callPanel.toast.info(Model.i18n.alertScreensharingStarted, 1)
+              } else {
+                this.callPanel.localVideo.willStream = false
+                this.callPanel.localVideo.isStreaming = false
+                this.callPanel.localVideo.wasStreamed = false
+                this.callPanel.localScreen.willShare = false
+                this.callPanel.localScreen.isSharing = false
+                this.callPanel.localScreen.wasShared = false
               }
               break
             case 'RENEGOTIATE':
@@ -274,9 +285,21 @@ export class Communicator {
     console.log('Communicator.onCallNewTrack, params:', params)
     if (params.callId == this.callId) {
       const call = this.client.call.getById(params.callId)
-      if (call.state != 'Ringing' && call.state != 'Initiated' && call.state != 'Initiating') {
+      if (['Initiating', 'Initiated', 'Ringing'].indexOf(call.state) < 0) {
         const avBox = params.local ? this.callPanel.guestAVBoxId : this.callPanel.agentAVBoxId
-        this.client.media.renderTracks([params.trackId], avBox)
+        if (params.local) {
+          this.client.media.renderTracks([params.trackId], avBox)
+        } else {
+          console.log('Communicator.onCallNewTrack, call:', call)
+          if (call.remoteTracks.length < 3) {
+            this.client.media.renderTracks([params.trackId], avBox)
+          } else {
+            let track = this.client.media.getTrackById(params.trackId)
+            if (track.kind == 'video') {
+              this.client.media.removeTracks([params.trackId], avBox)
+            }
+          }
+        }
       }
     }
   }
@@ -346,7 +369,7 @@ export class Communicator {
               // this.callPanel.toast.info(Model.i18n.alertCallConnectedLocal, 1);
             })
           }
-          if (call.remoteTracks) {
+          if (call.remoteTracks && call.remoteTracks.length < 3) {
             call.remoteTracks.forEach(t => {
               let track = this.client.media.getTrackById(t)
               console.log('Communicator.onCallStateChange, Connected, remoteTrack:', track, 'trackId:', t)
@@ -363,8 +386,10 @@ export class Communicator {
           break
         case this.client.call.states.ON_HOLD:
           console.log('Communicator.onCallStateChange, ON_HOLD')
+          if (this.callStateHistory[this.callStateHistory.length - 1] != call.state) {
+            this.callPanel.toast.warning(Model.i18n.alertCallOnHold, 2)
+          }
           this.callStateHistory.push(call.state)
-          this.callPanel.toast.warning(Model.i18n.alertCallOnHold, 2)
           this.callPanel.onChangeTelephonyState(this.callPanel.TELEPHONYSTATE_ONHOLD)
           break
         case this.client.call.states.ENDED:

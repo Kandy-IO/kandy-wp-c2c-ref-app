@@ -6,6 +6,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Released]
 
+## 1.0.2 - 2020-06-26
+
+### Changed
+- Disable video button when screen sharing is going on    `AFC-159`
+- Rebased Web Page C2C Reference App to make it compatible to SDK v4.16    `AFC-160`
+
+### Fixed
+- Fixed an issue where 2 remote videos    `AFC-143`
+- Fixed an issue where incorrect message appear on Web Page C2C Reference App when remote party resumes call from held state    `AFC-149`
+
 ## 1.0.1 - 2020-05-29
 
 ### Changed
