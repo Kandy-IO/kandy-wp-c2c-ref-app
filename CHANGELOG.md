@@ -6,6 +6,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Released]
 
+## 1.0.3 - 2020-08-28
+
+### Changed
+- Updated the Developer Tutorial (UAE) to show the ways to remove specific H.264 codecs    `AFC-176`
+- Rebased Web Page C2C Reference App to make it compatible to SDK v4.18    `AFC-177`
+
 ## 1.0.2 - 2020-06-26
 
 ### Changed

@@ -401,13 +401,16 @@ this.client = Kandy.create(kandyConfig)
 
 Using `removeCodecs` property under `kandy.call`, you can configure to remove specific unsupported codecs while making a call otherwise all the codecs would be used
 
-Sample configuration:
+The following removeCodecs property configuration shall be used in your app.
 
 ```javascript
 "kandy": {
     ⋮
     "call": {
-        "removeCodecs": ["VP8", "opus", "G722", "VP9", "ISAC"],
+        "removeCodecs": ["VP8", "opus", "G722", "VP9", "ISAC", "CN", {
+            "name": "H264", 
+            "fmtpParams": ["packetization-mode=0"]
+        }],
         ⋮
     },
     ⋮
