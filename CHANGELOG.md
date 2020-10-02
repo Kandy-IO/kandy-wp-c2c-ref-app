@@ -4,7 +4,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Released]
+### [Released]
+
+## 1.0.4 - 2020-09-02
+
+### Changed
+- Rebased Web Page C2C Reference App to make it compatible to SDK v4.19    `AFC-184`
+
+### Fixed
+- When call goes on hold, the screen becomes scrollable with a vertical scroll bar visible.    `AFC-178`
+- No Audio on C2C app after remote party performed some mid-call service.    `AFC-179`
 
 ## 1.0.3 - 2020-08-28
 

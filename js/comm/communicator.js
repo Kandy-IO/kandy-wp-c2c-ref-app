@@ -260,9 +260,7 @@ export class Communicator {
   }
   onCallNewMedia(params) {
     console.log('Communicator.onCallNewMedia, params:', params)
-    // check if this is our [one and only] active call
     if (params.callId == this.callId) {
-      // look to see if local media has video and disable/enable buttons accordingly
       if (!!params.error) {
         // let err = this.parseError(params.error);
         this.callPanel.toast.warning(Model.i18n['errorCode_' + params.error.code], 2)
@@ -291,14 +289,7 @@ export class Communicator {
           this.client.media.renderTracks([params.trackId], avBox)
         } else {
           console.log('Communicator.onCallNewTrack, call:', call)
-          if (call.remoteTracks.length < 3) {
-            this.client.media.renderTracks([params.trackId], avBox)
-          } else {
-            let track = this.client.media.getTrackById(params.trackId)
-            if (track.kind == 'video') {
-              this.client.media.removeTracks([params.trackId], avBox)
-            }
-          }
+          this.client.media.removeTracks([params.trackId], avBox)
         }
       }
     }
@@ -369,7 +360,7 @@ export class Communicator {
               // this.callPanel.toast.info(Model.i18n.alertCallConnectedLocal, 1);
             })
           }
-          if (call.remoteTracks && call.remoteTracks.length < 3) {
+          if (call.remoteTracks) {
             call.remoteTracks.forEach(t => {
               let track = this.client.media.getTrackById(t)
               console.log('Communicator.onCallStateChange, Connected, remoteTrack:', track, 'trackId:', t)

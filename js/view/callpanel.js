@@ -119,6 +119,7 @@ export class CallPanel {
         this.isCallOnHold = true
         this.aver.stateHoldCall()
         this.guestAVBox.hide()
+        this.agentAVBox.hide()
         break
     }
   }
