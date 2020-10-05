@@ -1,6 +1,6 @@
 # kandy-wp-c2c-ref-app
 
-![Kandy SDK v4.19.0](https://img.shields.io/badge/Kandy%20SDK-v4.19.0-green)
+[![Compatible Kandy SDK version][]](https://github.com/Kandy-IO/kandy-callMe-js-sdk)
 
 The Web Page Click-to-Call (C2C) application is a JavaScript based open source reference application that uses the Kandy Anonymous CallMe JavaScript SDK that developers can adapt and productize for integration into a customer's web site for anonymous click-to-calls. The Web Page Click-to-Call Reference Application supports token-based anonymous calls, and non-tokenized anonymous calls.
 
@@ -35,3 +35,5 @@ For more information, please refer
 | Opera         | Windows, MacOS          |
 
 Subject to the capabilities and limitations of the browser, Operating System, Kandy Anonymous CallMe JavaScript SDK, and destination to which an anonymous call is connected. Please refer to the Kandy Anonymous CallMe JavaScript SDK for applicable SDK limitations for each browser.
+
+[Compatible Kandy SDK version]: https://img.shields.io/badge/Kandy%20SDK-v4.19.0-green
