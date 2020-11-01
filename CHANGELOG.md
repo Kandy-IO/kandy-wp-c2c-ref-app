@@ -6,7 +6,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Released]
 
-## 1.0.4 - 2020-09-02
+## 1.0.5 - 2020-10-31
+
+### Changed
+- Rebased Web Page C2C Reference App to make it compatible to SDK v4.20    `AFC-189`
+
+### Fixed
+- Unable to stop video or screenshare after a video or screenshare call is resumed from Hold    `AFC-186`
+
+## 1.0.4 - 2020-10-02
 
 ### Changed
 - Rebased Web Page C2C Reference App to make it compatible to SDK v4.19    `AFC-184`

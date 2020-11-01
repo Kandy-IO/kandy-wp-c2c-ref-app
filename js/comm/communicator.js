@@ -352,7 +352,7 @@ export class Communicator {
             call.localTracks.forEach(t => {
               let track = this.client.media.getTrackById(t)
               console.log('Communicator.onCallStateChange, Connected, localTrack:', track, 'trackId:', t)
-              if (track.kind == 'audio') {
+              if (!!track && track.kind == 'audio') {
                 this.client.media.removeTracks([t], this.callPanel.guestAVBoxId)
               } else {
                 this.client.media.renderTracks([t], this.callPanel.guestAVBoxId)
@@ -402,7 +402,7 @@ export class Communicator {
     if (allTracks == call.localTracks) {
       allTracks.forEach(t => {
         const thisTrack = this.client.media.getTrackById(t)
-        if (thisTrack.kind == 'audio') {
+        if (!!thisTrack && thisTrack.kind == 'audio') {
           tracks.push(thisTrack)
         }
       })
@@ -416,7 +416,7 @@ export class Communicator {
     if (allTracks) {
       allTracks.forEach(t => {
         const thisTrack = this.client.media.getTrackById(t)
-        if (thisTrack.kind == 'video') {
+        if (!!thisTrack && thisTrack.kind == 'video') {
           tracks.push(thisTrack)
         }
       })
