@@ -267,6 +267,11 @@ export class Communicator {
         if (params.error.name == 'BasicError' && !!params.local) {
           this.callPanel.control.callCamera.setState(true)
           this.callPanel.control.callScreenshare.setState(true)
+          this.callPanel.control.callCamera.enable()
+          this.callPanel.control.callScreenshare.enable()
+          if (this.callPanel.localScreen.isSharing && this.callPanel.localVideo.wasStreamed) {
+            this.steers.outCallCameraOn();
+          }
         }
       }
     }
@@ -289,7 +294,7 @@ export class Communicator {
           this.client.media.renderTracks([params.trackId], avBox)
         } else {
           console.log('Communicator.onCallNewTrack, call:', call)
-          this.client.media.removeTracks([params.trackId], avBox)
+          this.client.media.renderTracks([params.trackId], avBox)
         }
       }
     }

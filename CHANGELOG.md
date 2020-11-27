@@ -6,6 +6,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### [Released]
 
+## 1.0.6 - 2020-11-30
+
+### Changed
+- Rebased Web Page C2C Reference App to make it compatible to SDK v4.21    `AFC-196`
+
+### Fixed
+- Remote video cannot be seen in C2C app    `AFC-190`
+- Remote Screenshare cannot be seen in C2C app    `AFC-191`
+- Local and remote video cannot be seen when screen share is clicked and cancelled during ongoing video call    `AFC-193`
+
 ## 1.0.5 - 2020-10-31
 
 ### Changed
