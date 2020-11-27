@@ -36,4 +36,4 @@ For more information, please refer
 
 Subject to the capabilities and limitations of the browser, Operating System, Kandy Anonymous CallMe JavaScript SDK, and destination to which an anonymous call is connected. Please refer to the Kandy Anonymous CallMe JavaScript SDK for applicable SDK limitations for each browser.
 
-[Compatible Kandy SDK version]: https://img.shields.io/badge/Kandy%20SDK-v4.20.0-green
+[Compatible Kandy SDK version]: https://img.shields.io/badge/Kandy%20SDK-v4.21.0-green
