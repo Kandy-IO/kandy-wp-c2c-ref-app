@@ -59,24 +59,29 @@ export class LandingPage {
     e.preventDefault()
     let customParams = []
     let isValid = true
-    for (let i = 0; i < Model.landingConfig.content.inputField.length; i++) {
-      let isFieldValid = this.fields[i].validate()
-      if (isFieldValid) {
-        customParams.push(this.fields[i].data())
-      }
-      isValid = isValid && isFieldValid
-    }
-    if (isValid) {
-      if (customParams.length > 0) {
-        if (!!Model.callOptions.customParameters) {
-          Model.callOptions.customParameters = [...Model.callOptions.customParameters, ...customParams]
-        } else {
-          Model.callOptions.customParameters = customParams
+    Model.callee = this.fields[0].data().value
+    if (Model.callee.replace(/ /g, '')) {
+      for (let i = 1; i < Model.landingConfig.content.inputField.length; i++) {
+        let isFieldValid = this.fields[i].validate()
+        if (isFieldValid) {
+          customParams.push(this.fields[i].data())
         }
+        isValid = isValid && isFieldValid
       }
-      this.proceed()
+      if (isValid) {
+        if (customParams.length > 0) {
+          if (!!Model.callOptions.customParameters) {
+            Model.callOptions.customParameters = [...Model.callOptions.customParameters, ...customParams]
+          } else {
+            Model.callOptions.customParameters = customParams
+          }
+        }
+        this.proceed()
+      } else {
+        this.toast.warning(Model.i18n.alertEnterValidInput)
+      }
     } else {
-      this.toast.warning(Model.i18n.alertEnterValidInput)
+      this.toast.warning("Please enter Destination ID")
     }
   }
   /**

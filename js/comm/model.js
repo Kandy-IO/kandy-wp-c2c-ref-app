@@ -62,7 +62,7 @@ export const Model = {
           id: 'fullname',
           label: 'Fullname',
           hint: 'e.g., Tony Stark',
-          match: '^[a-zA-Z0-9 ._-]{3,30}$',
+          match: '^[a-zA-Z0-9 ._-]{3,50}$',
           tip: 'Only alphanumeric characters along with space, hyphen, dot & dash are accepted.',
           errmsg: 'Valid characters are A-Z a-z 0-9 . _ -'
         }

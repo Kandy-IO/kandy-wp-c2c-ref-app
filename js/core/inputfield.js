@@ -46,7 +46,7 @@ export class InputField {
     let tmpl = `
         <div class="form-group">
             <label class="form-label" for="lp_[id]">[label]</label>
-            <input class="form-input" type="text" id="lp_[id]" placeholder="[hint]" maxlength="30" pattern="[valid]" title="[tip]">
+            <input class="form-input" type="text" id="lp_[id]" placeholder="[hint]" maxlength="50" pattern="[valid]" title="[tip]">
             <div class="form-input-hint hide">[errmsg]</div>
         </div>`
     $(this.parentRef).append(tmpl.graft(this.model))

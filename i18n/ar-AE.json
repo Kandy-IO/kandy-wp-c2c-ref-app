@@ -1,11 +1,9 @@
 {
   "headerAppTitle": "اتصل بنا",
   "footerNote": "مدعوم من اسم العميل",
-
   "panelTitleAVBox": "زائر",
   "modalTitleDialpad": "لوحة الاتصال",
   "userAnonymous": "مجهول",
-
   "tooltipConnectCall": "ربط الاتصال",
   "tooltipHoldCall": "عقد المكالمة",
   "tooltipResumeCall": "استئناف الاتصال",
@@ -21,7 +19,6 @@
   "tooltipVideoOff": "خارج الفيديو",
   "tooltipVideoOn": "على الفيديو",
   "tooltipDisconnectCall": "فصل الاتصال",
-
   "alertConfigIdNotFound": "لم يتم العثور على توصيف المعرف [0]",
   "alertConfigFileNotFound": "ملف التكوين غير موجود",
   "alertLanguageSetAs": "تم تعيين اللغة كـ [0]",
@@ -54,33 +51,29 @@
   "alertNoLocalVideoAvailableToRemove": "لا يوجد فيديو محلي متاح لإزالته",
   "alertCallAborted": "تم إحباط المكالمة",
   "alertPermissionDenied": "طلب الاذن مرفوض",
-
   "errorCode_500": "حدث خطأ",
   "errorCode_call:4": "أخفق الحصول على الوسائط كإذن مرفوض",
-
   "titleWelcome": "أهلا بك!",
   "descriptionFillUpForm": "قبل المتابعة ، يرجى ملء هذه التفاصيل.",
-
   "idFullname": "الاسم بالكامل",
   "labelFullname": "الاسم بالكامل",
   "hintFullname": "على سبيل المثال ، توني ستارك",
   "tipFullname": "يتم قبول الأحرف الأبجدية الرقمية فقط مع المسافة والوصلة والنقطة والشرطة.",
-  "errmsgFullname": "الأحرف الصالحة هي A-Z a-z 0-9. _ - بطول 3-30",
-
+  "errmsgFullname": "الأحرف الصالحة هي A-Z a-z 0-9. _ - بطول 3-50",
+  "labelCallee": "Destination ID",
+  "hintCallee": "e.g.,  anonymous@invalid.com",
+  "tipCallee": "Destination ID",
   "labelPhone": "هاتف",
   "hintPhone": "على سبيل المثال ، (123) -456-7890",
   "tipPhone": "يتم قبول الرقم فقط مع المسافة والنقطة والقوس والوصل كمحددات.",
   "errmsgPhone": "الأحرف الصالحة هي 0-9 (). - + طول 3-20",
-
   "labelEmail": "البريد الإلكتروني",
   "hintEmail": "على سبيل المثال ، user@host.domain",
   "tipEmail": "يتم قبول الأحرف الأبجدية الرقمية فقط إلى جانب نقطة ، شرطة ، واصلة في & شرطة.",
   "errmsgEmail": "الأحرف الصالحة هي A-Z a-z 0-9. _ - @. _",
-
   "labelBaggage": "معرف الأمتعة",
   "hintBaggage": "على سبيل المثال ، 751212345M",
   "tipBaggage": "يتم قبول 8-10 أحرف أبجدية رقمية فقط.",
   "errmsgBaggage": "الأحرف الصالحة هي A-Z a-z 0-9 بطول 8-10",
-
   "buttonLabelCall": "مكالمة"
 }

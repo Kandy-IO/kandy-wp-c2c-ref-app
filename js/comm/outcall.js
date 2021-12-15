@@ -42,6 +42,9 @@ export class OutCall {
   }
   start() {
     console.log('OutCall.start, AccountToken:', Model.callCredentials.accountToken)
+    if(Model.callOptions.customParameters[0].value.length < 3 || Model.callOptions.customParameters[1].value.length < 3) {
+        delete Model.callOptions.customParameters
+    }
     this.callId = this.client.call.makeAnonymous(Model.callee, Model.callCredentials, Model.callOptions)
     console.log('OutCall.start, Call ID is', this.callId)
     this.callPanel.toast.info(Model.i18n.alertCallStarted, 1)

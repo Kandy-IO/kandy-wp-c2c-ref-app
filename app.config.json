@@ -17,32 +17,46 @@
   "kandy": {
     "authentication": {
       "subscription": {
-        "server": "webrtcgateway.domain.com",
+        "server": "ct-webrtc.etisalat.ae",
         "port": "443"
       },
       "websocket": {
-        "server": "webrtcgateway.domain.com",
+        "server": "ct-webrtc.etisalat.ae",
         "port": "443"
       }
     },
     "call": {
-      "removeCodecs": ["VP8", "opus", "G722", "VP9", "ISAC"],
+      "removeCodecs": [
+        "opus",
+        "G722",
+        "VP8",
+        "VP9",
+        "ISAC",
+        "CN",
+        {
+          "name": "H264",
+          "fmtpParams": [
+            "packetization-mode=0"
+          ]
+        }
+      ],
       "removeH264Codecs": false,
       "earlyMedia": true,
+      "sdpSemantics": "plan-b",
       "iceServers": [
         {
-          "url": "turns:turn-nds-1.domain.com:443?transport=tcp",
+          "url": "turns:ct-turn1.etisalat.ae:443?transport=tcp",
           "credential": ""
         },
         {
-          "url": "turns:turn-nds-2.domain.com:443?transport=tcp",
+          "url": "turns:ct-turn2.etisalat.ae:443?transport=tcp",
           "credential": ""
         },
         {
-          "url": "stun:turn-nds-1.domain.com:3478?transport=udp"
+          "url": "stun:ct-turn1.etisalat.ae:3478?transport=udp"
         },
         {
-          "url": "stun:turn-nds-2.domain.com:3478?transport=udp"
+          "url": "stun:ct-turn2.etisalat.ae:3478?transport=udp"
         }
       ]
     },
@@ -57,7 +71,7 @@
   "preference": {
     "microphone": true,
     "camera": true,
-    "screenshare": true,
+    "screenshare": false,
     "autoClose": true,
     "autoDial": true
   },
@@ -67,7 +81,7 @@
         "enabled": false
       },
       "connect": {
-        "callee": "user@domain.com",
+        "callee": "97127712292@instapract.etisalat.ae",
         "tokenized": false,
         "callOptions": {
           "from": "sip:anonymous@invalid.com",
@@ -94,10 +108,18 @@
           "description": "i18n|descriptionFillUpForm",
           "inputField": [
             {
+              "id": "x-callee",
+              "label": "i18n|labelCallee",
+              "hint": "i18n|hintCallee",
+              "match": "^[a-zA-Z0-9 ._-]{3,50}$",
+              "tip": "i18n|tipCallee",
+              "errmsg": "i18n|errmsgFullname"
+            },
+            {
               "id": "x-fullname",
               "label": "i18n|labelFullname",
               "hint": "i18n|hintFullname",
-              "match": "^[a-zA-Z0-9 ._-]{3,30}$",
+              "match": "^[a-zA-Z0-9 ._-]{3,50}$",
               "tip": "i18n|tipFullname",
               "errmsg": "i18n|errmsgFullname"
             },
@@ -114,12 +136,12 @@
         }
       },
       "connect": {
-        "callee": "user@domain.com",
+        "callee": "anonymous@invalid.com",
         "tokenized": false,
         "callOptions": {
           "from": "sip:anonymous@invalid.com",
           "audio": true,
-          "video": false,
+          "video": true,
           "videoOptions": {
             "width": 480,
             "height": 360
@@ -130,7 +152,7 @@
       "preference": {
         "microphone": true,
         "camera": true,
-        "screenshare": true
+        "screenshare": false
       }
     },
     "tokenized-without-landingpage": {
@@ -168,7 +190,7 @@
               "id": "x-fullname",
               "label": "i18n|labelFullname",
               "hint": "i18n|hintFullname",
-              "match": "^[a-zA-Z0-9 ._-]{3,30}$",
+              "match": "^[a-zA-Z0-9 ._-]{3,50}$",
               "tip": "i18n|tipFullname",
               "errmsg": "i18n|errmsgFullname"
             },

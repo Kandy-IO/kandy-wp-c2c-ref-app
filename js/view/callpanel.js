@@ -95,7 +95,7 @@ export class CallPanel {
         break
       case this.TELEPHONYSTATE_EARLYMEDIA:
         this.acoustic.stop()
-        this.control.callDialpad.show()
+        // this.control.callDialpad.show()
         break
       case this.TELEPHONYSTATE_IDLE:
         this.defaultState()
@@ -107,7 +107,7 @@ export class CallPanel {
       case this.TELEPHONYSTATE_OFFHOOK:
         this.guestAVBox.show()
         this.acoustic.stop()
-        this.control.callDialpad.show()
+        //this.control.callDialpad.show()
         if (!this.isCallOnHold) {
           this.control.callMic.setState(!Model.callOptions.audio)
         }
