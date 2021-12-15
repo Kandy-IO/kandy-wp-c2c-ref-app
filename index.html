@@ -1,214 +1,84 @@
-<!-- 
-Copyright © 2020 Ribbon Communications Operating Company, Inc. (“Ribbon”).
-All rights reserved. Use of this media and its contents is subject to the 
-terms and conditions of the applicable end user or software license 
-agreement, right to use notice, and all relevant copyright protections.
-
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-
-    http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
- -->
-
 <!doctype html>
-<html class="no-js" lang="en">
+<html>
 
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="robots" content="index, follow">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>ClickToCall</title>
-    <meta name="description" content="This app is used to establish communication channel between user and agent via Kandy server.">
-    <link rel="shortcut icon" href="img/favicon.ico">
-    <link rel="icon" href="img/icon.png">
-    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" type="text/css" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
-    <link rel="stylesheet" type="text/css" href="https://unpkg.com/spectre.css/dist/spectre-exp.min.css">
-    <link rel="stylesheet" type="text/css" href="https://unpkg.com/spectre.css/dist/spectre-icons.min.css">
-    <link rel="stylesheet" type="text/css" href="css/main.css">
-    <link rel="stylesheet" type="text/css" href="css/theme.css">
+    <title>Agent App</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
-    <!--[if lte IE 9]>
-            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
-        <![endif]-->
-
-    <!-- Add your site or application content here -->
-    <div id="splash">
-        <div class="toast toast-primary" style="display: none;">
-            <button class="btn btn-clear float-right toast_close"></button>
-            <span class="toast_message">Info, alert or feedback message</span>
-        </div>
-        <div class="app-loader box-full-ht box-center-vh">
-            <span class="caption">Loading&hellip;</span>
-            <img src="img/loader.svg" class="symbol spin">
-        </div>
-        <div class="invisible pos-br"><i class="material-icons">memory</i></div>
-    </div>
-    <div id="landingpage" class="hide">
-        <header class="navbar mdl-shadow--2dp">
-            <section class="navbar-section">
-                <img src="img/icon.png" class="logo auto-fill" data-bind="src:Model.brandConfig.header.logoUrl">
-                <span class="mdl-layout-title brand auto-fill" data-bind="html:Model.brandConfig.header.appTitle"></span>
-            </section>
-        </header>
-        <div class="box-avail-ht box-center-vh">
-            <div id="landingpage_panel">
-                <div class="panel mdl-shadow--2dp">
-                    <div class="panel-header">
-                        <div class="panel-title auto-fill" data-bind="html:Model.landingConfig.content.title"></div>
-                    </div>
-                    <div class="panel-nav">
-                        <div class="toast toast-primary" style="display: none;">
-                            <button class="btn btn-clear float-right toast_close"></button>
-                            <span class="toast_message">Info, alert or feedback message</span>
-                        </div>
-                    </div>
-                    <div class="panel-body">
-                        <div class="description auto-fill" data-bind="html:Model.landingConfig.content.description"></div>
-                        <div id="lp_form"></div>
-                    </div>
-                    <div class="panel-footer">
-                        <button id="lp_submit" class="btn btn-primary auto-fill" type="button" data-bind="html:Model.landingConfig.content.buttonLabel"></button>
-                    </div>
+    <!-- <div class="notification">
+        <span class="message">You agree that by accessing the Application, you have permitted the use of <a href="https://github.com/Kandy-IO/kandy-cpaas-js-sdk" title="Kandy CPaaS JavaScript SDK">Kandy CPaaS JavaScript SDK</a> and bound by their <a href="https://github.com/Kandy-IO/kandy-cpaas-js-sdk/blob/master/LICENSE.md" title="License">License</a> agreement.</span>
+        <span class="close">&times;</span>
+    </div> -->
+    <div class="matter">
+        <h2>Agent App</h2>
+        <div>
+            <h4>Authenticate using your account information</h4>
+                <div id="passwordID">
+                    <ul>
+                        <!-- <li>
+                            <label>Client ID:</label>
+                            <input type="text" id="clientId" />
+                        </li> -->
+                        <li>
+                            <label>User Email:</label>
+                            <input type="text" id="userEmail" value="u_97127712292@instapract.etisalat.ae" />
+                        </li>
+                        <li>
+                            <label>Password:</label>
+                            <input type="password" id="password" value="Kandy-1234" />
+                        </li>
+                    </ul>
+                    <h4>Login/Subscribe To Call Service Websocket Channel</h4>
+                    <button type="button" onclick="loginSubscribe()" id="loginBySubscribeBtn">Login/Subscribe</button>
                 </div>
+        </div>
+        <!-- User input for responding to an incoming call. -->
+        <div>
+            <h4>Respond to a Call</h4>
+            <p>
+                <button type="button" onclick="answerCall()">Answer Call</button>
+                <label>with video</label>
+                <input type="checkbox" id="answer-with-video" checked />
+            </p>
+        </div>
+        <!-- User input for responding to an incoming call. -->
+        <div>
+            <h4>Mid-Call Operations</h4>
+            <p>
+                <button type="button" onclick="HoldCall()">Hold Call</button>
+                <button type="button" onclick="UnholdCall()">Unhold Call</button>
+            </p>
+        </div>
+        <!-- User input for ending an ongoing call. -->
+        <div>
+            <h4>End a Call</h4>
+            <p>
+                <button type="button" onclick="endCall()">End Call</button>
+            </p>
+        </div>
+        <!-- Media containers. -->
+        <div>
+            <div>
+                <h4>Remote video: </h4>
+                <div id="remote-container" class="box"></div>
+            </div>
+            <div>
+                <h4>Local video: </h4>
+                <div id="local-container" class="box"></div>
             </div>
         </div>
-        <footer class="text-right">
-            <span class="note auto-fill" data-bind="html:Model.brandConfig.footer.note"></span>
-        </footer>
-    </div>
-    <div id="dashboard" class="hide">
-        <header class="navbar mdl-shadow--2dp">
-            <section class="navbar-section">
-                <img src="img/icon.png" class="logo auto-fill" data-bind="src:Model.brandConfig.header.logoUrl">
-                <span class="mdl-layout-title brand auto-fill" data-bind="html:Model.brandConfig.header.appTitle"></span>
-            </section>
-        </header>
-        <div class="container box-avail-ht">
-            <div class="columns">
-                <div id="call_panel" class="column col-12 col-xs-12 pad-top pad-bottom hide">
-                    <div class="panel mdl-shadow--2dp">
-                        <div class="panel-header">
-                            <div class="panel-title">Guest</div>
-                        </div>
-                        <div class="panel-nav">
-                            <div class="toast toast-primary">
-                                <button class="btn btn-clear float-right toast_close"></button>
-                                <span class="toast_message">Info, alert or feedback message</span>
-                            </div>
-                        </div>
-                        <div class="panel-body av-box">
-                            <div class="aver aver-success blink phone_ring"><i class="material-icons">phone_in_talk</i></div>
-                            <div class="aver aver-error blink phone_cut"><i class="material-icons">phone_disabled</i></div>
-                            <div class="aver aver-warning blink phone_call"><i class="material-icons">phone_callback</i></div>
-                            <div class="aver aver-error blink phone_miss"><i class="material-icons">phone_missed</i></div>
-                            <div class="aver aver-warning blink phone_hold"><i class="material-icons">phone_paused</i></div>
-                            <div id="av_agent" class="av-box-content"></div>
-                            <div id="av_guest" class="av-box-content av-box-inset"></div>
-                        </div>
-                        <div class="panel-footer">
-                            <button class="btn btn-success call_start auto-fill" data-bind="title:Model.i18n.tooltipConnectCall"><i class="material-icons">call</i></button>
-                            <button class="btn btn-silver call_hold auto-fill" data-bind="title:Model.i18n.tooltipHoldCall"><i class="material-icons">phone_paused</i></button>
-                            <button class="btn btn-silver call_resume auto-fill" data-bind="title:Model.i18n.tooltipResumeCall"><i class="material-icons">phone_callback</i></button>
-                            <button class="btn btn-silver call_mic_on auto-fill" data-bind="title:Model.i18n.tooltipMicrophoneOn"><i class="material-icons">mic_off</i></button>
-                            <button class="btn btn-silver call_mic_off auto-fill" data-bind="title:Model.i18n.tooltipMicrophoneOff"><i class="material-icons">mic</i></button>
-                            <button class="btn btn-silver call_camera_on auto-fill" data-bind="title:Model.i18n.tooltipCameraOn"><i class="material-icons">videocam_off</i></button>
-                            <button class="btn btn-silver call_camera_off auto-fill" data-bind="title:Model.i18n.tooltipCameraOff"><i class="material-icons">video_call</i></button>
-                            <button class="btn btn-silver call_screen_share_on auto-fill" data-bind="title:Model.i18n.tooltipScreenshareOn"><i class="material-icons">stop_screen_share</i></button>
-                            <button class="btn btn-silver call_screen_share_off auto-fill" data-bind="title:Model.i18n.tooltipScreenshareOff"><i class="material-icons">screen_share</i></button>
-                            <button class="btn btn-silver call_dialpad_show auto-fill" data-bind="title:Model.i18n.tooltipShowDialpad"><i class="material-icons">dialpad</i></button>
-                            <button class="btn btn-silver call_audio_off auto-fill" data-bind="title:Model.i18n.tooltipSpeakerOff"><i class="material-icons">volume_up</i></button>
-                            <button class="btn btn-silver call_audio_on auto-fill" data-bind="title:Model.i18n.tooltipSpeakerOn"><i class="material-icons">volume_off</i></button>
-                            <button class="btn btn-silver call_video_off auto-fill" data-bind="title:Model.i18n.tooltipVideoOff"><i class="material-icons">videocam</i></button>
-                            <button class="btn btn-silver call_video_on auto-fill" data-bind="title:Model.i18n.tooltipVideoOn"><i class="material-icons">videocam_off</i></button>
-                            <button class="btn btn-error to-right call_stop auto-fill" data-bind="title:Model.i18n.tooltipDisconnectCall"><i class="material-icons">call_end</i></button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="modal modal-sm" id="dialpad_modal">
-                <div class="modal-overlay modal-close" aria-label="Close"></div>
-                <div class="modal-container">
-                    <div class="modal-header">
-                        <button class="btn btn-clear float-right modal-close" aria-label="Close"></button>
-                        <div class="modal-title h5 auto-fill" data-bind="html:Model.i18n.modalTitleDialpad">Dialpad</div>
-                    </div>
-                    <div class="modal-body">
-                        <div class="content">
-                            <div class="columns">
-                                <div class="column col-12">
-                                    <div class="display-box">
-                                        <span class="display-txt auto-fill" data-bind="html:DialpadModal.displayContent"></span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="columns">
-                                <div class="column col-4">
-                                    <button class="btn btn-silver dialpad-key" type="button" value="1">1<sub> </sub></button>
-                                </div>
-                                <div class="column col-4">
-                                    <button class="btn btn-silver dialpad-key" type="button" value="2">2<sub>ABC</sub></button>
-                                </div>
-                                <div class="column col-4">
-                                    <button class="btn btn-silver dialpad-key" type="button" value="3">3<sub>DEF</sub></button>
-                                </div>
-                            </div>
-                            <div class="columns">
-                                <div class="column col-4">
-                                    <button class="btn btn-silver dialpad-key" type="button" value="4">4<sub>GHI</sub></button>
-                                </div>
-                                <div class="column col-4">
-                                    <button class="btn btn-silver dialpad-key" type="button" value="5">5<sub>JKL</sub></button>
-                                </div>
-                                <div class="column col-4">
-                                    <button class="btn btn-silver dialpad-key" type="button" value="6">6<sub>MNO</sub></button>
-                                </div>
-                            </div>
-                            <div class="columns">
-                                <div class="column col-4">
-                                    <button class="btn btn-silver dialpad-key" type="button" value="7">7<sub>PQRS</sub></button>
-                                </div>
-                                <div class="column col-4">
-                                    <button class="btn btn-silver dialpad-key" type="button" value="8">8<sub>TUV</sub></button>
-                                </div>
-                                <div class="column col-4">
-                                    <button class="btn btn-silver dialpad-key" type="button" value="9">9<sub>WXYZ</sub></button>
-                                </div>
-                            </div>
-                            <div class="columns">
-                                <div class="column col-4">
-                                    <button class="btn btn-silver dialpad-key" type="button" value="*">*<sub> </sub></button>
-                                </div>
-                                <div class="column col-4">
-                                    <button class="btn btn-silver dialpad-key" type="button" value="0">0<sub> </sub></button>
-                                </div>
-                                <div class="column col-4">
-                                    <button class="btn btn-silver dialpad-key" type="button" value="#">#<sub> </sub></button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <!-- Log views. -->
+        <div class="terminal-wrapper">
+            <h4>Terminal</h4>
+            <div id="terminal"></div>
         </div>
-        <footer class="text-right">
-            <span class="note auto-fill" data-bind="html:Model.brandConfig.footer.note"></span>
-        </footer>
-    </div>
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://unpkg.com/is_js/is.min.js"></script>
-    <!-- <script src="https://unpkg.com/@kandy-io/callme-sdk@4.x.x/dist/kandy.js"></script> -->
-    <script src="js/main.js" type="module"></script>
+        <!-- <script src="https://unpkg.com/@kandy-io/cpaas-sdk/dist/kandy.js" crossorigin="anonymous"></script> -->
+        <script src="https://unpkg.com/@kandy-io/link-sdk/dist/kandy.js" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="etisalatConfig.json"></script>
+        <script src="js/utility.js"></script>
+        <script src="js/app.js"></script>
 </body>
 
 </html>
