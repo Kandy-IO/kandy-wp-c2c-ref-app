@@ -4,6 +4,8 @@
 <head>
     <title>Agent App</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 
 <body>
@@ -11,10 +13,11 @@
         <span class="message">You agree that by accessing the Application, you have permitted the use of <a href="https://github.com/Kandy-IO/kandy-cpaas-js-sdk" title="Kandy CPaaS JavaScript SDK">Kandy CPaaS JavaScript SDK</a> and bound by their <a href="https://github.com/Kandy-IO/kandy-cpaas-js-sdk/blob/master/LICENSE.md" title="License">License</a> agreement.</span>
         <span class="close">&times;</span>
     </div> -->
-    <div class="matter">
+    <div class="col-md-10 matter">
         <h2>Agent App</h2>
-        <div>
-            <h4>Authenticate using your account information</h4>
+        <div class="col-md-6">
+            <div>
+                <h4>Authenticate using your account information</h4>
                 <div id="passwordID">
                     <ul>
                         <!-- <li>
@@ -31,35 +34,34 @@
                         </li>
                     </ul>
                     <h4>Login/Subscribe To Call Service Websocket Channel</h4>
-                    <button type="button" onclick="loginSubscribe()" id="loginBySubscribeBtn">Login/Subscribe</button>
+                    <button class="btn-sm" type="button" onclick="loginSubscribe()" id="loginBySubscribeBtn">Login/Subscribe</button>
                 </div>
-        </div>
-        <!-- User input for responding to an incoming call. -->
-        <div>
-            <h4>Respond to a Call</h4>
-            <p>
-                <button type="button" onclick="answerCall()">Answer Call</button>
-                <label>with video</label>
-                <input type="checkbox" id="answer-with-video" checked />
-            </p>
-        </div>
-        <!-- User input for responding to an incoming call. -->
-        <div>
-            <h4>Mid-Call Operations</h4>
-            <p>
-                <button type="button" onclick="HoldCall()">Hold Call</button>
-                <button type="button" onclick="UnholdCall()">Unhold Call</button>
-            </p>
-        </div>
-        <!-- User input for ending an ongoing call. -->
-        <div>
-            <h4>End a Call</h4>
-            <p>
-                <button type="button" onclick="endCall()">End Call</button>
-            </p>
-        </div>
-        <!-- Media containers. -->
-        <div>
+            </div>
+            <!-- User input for responding to an incoming call. -->
+            <div>
+                <h4>Respond to a Call</h4>
+                <p>
+                    <button class="btn-sm" type="button" onclick="answerCall()">Answer Call</button>
+                    <label>with video</label>
+                    <input type="checkbox" id="answer-with-video" checked />
+                </p>
+            </div>
+            <!-- User input for responding to an incoming call. -->
+            <div>
+                <h4>Mid-Call Operations</h4>
+                <p>
+                    <button class="btn-sm" type="button" onclick="HoldCall()">Hold Call</button>
+                    <button class="btn-sm" type="button" onclick="UnholdCall()">Unhold Call</button>
+                </p>
+            </div>
+            <!-- User input for ending an ongoing call. -->
+            <div>
+                <h4>End a Call</h4>
+                <p>
+                    <button class="btn-sm" type="button" onclick="endCall()">End Call</button>
+                </p>
+            </div>
+
             <div>
                 <h4>Remote video: </h4>
                 <div id="remote-container" class="box"></div>
@@ -70,15 +72,16 @@
             </div>
         </div>
         <!-- Log views. -->
-        <div class="terminal-wrapper">
-            <h4>Terminal</h4>
+        <div class="col-md-6 terminal-wrapper">
+            <h4><b>Terminal</b></h4>
             <div id="terminal"></div>
         </div>
-        <!-- <script src="https://unpkg.com/@kandy-io/cpaas-sdk/dist/kandy.js" crossorigin="anonymous"></script> -->
-        <script src="https://unpkg.com/@kandy-io/link-sdk/dist/kandy.js" crossorigin="anonymous"></script>
-        <script type="text/javascript" src="etisalatConfig.json"></script>
-        <script src="js/utility.js"></script>
-        <script src="js/app.js"></script>
+    </div>
+    <!-- <script src="https://unpkg.com/@kandy-io/cpaas-sdk/dist/kandy.js" crossorigin="anonymous"></script> -->
+    <script src="https://unpkg.com/@kandy-io/link-sdk/dist/kandy.js" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="etisalatConfig.json"></script>
+    <script src="js/utility.js"></script>
+    <script src="js/app.js"></script>
 </body>
 
 </html>

@@ -1,22 +1,3 @@
-<!-- 
-Copyright © 2020 Ribbon Communications Operating Company, Inc. (“Ribbon”).
-All rights reserved. Use of this media and its contents is subject to the 
-terms and conditions of the applicable end user or software license 
-agreement, right to use notice, and all relevant copyright protections.
-
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-
-    http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
- -->
-
 <!doctype html>
 <html class="no-js" lang="en">
 
@@ -25,17 +6,14 @@ limitations under the License.
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="robots" content="index, follow">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>ClickToCall</title>
-    <meta name="description"
-        content="This app is used to establish communication channel between user and agent via Kandy server.">
+    <title>Demo</title>
+    <meta name="description" content="A demo page tp showcase C2C reference webapp">
     <link rel="shortcut icon" href="img/favicon.ico">
-    <link rel="icon" href="img/icon.png">
-    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="icon" href="img/logo.png">
     <link rel="stylesheet" type="text/css" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
     <link rel="stylesheet" type="text/css" href="https://unpkg.com/spectre.css/dist/spectre-exp.min.css">
     <link rel="stylesheet" type="text/css" href="https://unpkg.com/spectre.css/dist/spectre-icons.min.css">
-    <link rel="stylesheet" type="text/css" href="css/main.css">
-    <link rel="stylesheet" type="text/css" href="css/theme.css">
+    <link rel="stylesheet" type="text/css" href="demo.css">
 </head>
 
 <body>
@@ -44,225 +22,235 @@ limitations under the License.
         <![endif]-->
 
     <!-- Add your site or application content here -->
-    <div id="splash">
-        <div class="toast toast-primary" style="display: none;">
-            <button class="btn btn-clear float-right toast_close"></button>
-            <span class="toast_message">Info, alert or feedback message</span>
-        </div>
-        <div class="app-loader box-full-ht box-center-vh">
-            <span class="caption">Loading&hellip;</span>
-            <img src="img/loader.svg" class="symbol spin">
-        </div>
-        <div class="invisible pos-br"><i class="material-icons">memory</i></div>
-    </div>
-    <div id="landingpage" class="hide">
-        <header class="navbar mdl-shadow--2dp">
-            <section class="navbar-section">
-                <img src="img/icon.png" class="logo auto-fill" data-bind="src:Model.brandConfig.header.logoUrl">
-                <span class="mdl-layout-title brand auto-fill"
-                    data-bind="html:Model.brandConfig.header.appTitle"></span>
-            </section>
-        </header>
-        <div class="box-avail-ht box-center-vh">
-            <div id="landingpage_panel">
-                <div class="panel mdl-shadow--2dp">
-                    <div class="panel-header">
-                        <div class="panel-title auto-fill" data-bind="html:Model.landingConfig.content.title"></div>
-                    </div>
-                    <div class="panel-nav">
-                        <div class="toast toast-primary" style="display: none;">
-                            <button class="btn btn-clear float-right toast_close"></button>
-                            <span class="toast_message">Info, alert or feedback message</span>
+    <div class="container grid-lg">
+        <div class="columns">
+            <div class="column">
+                <header class="navbar">
+                    <section class="navbar-section">
+                        <span class="app-fn">Avrum</span>&nbsp;<span class="app-ln">Airlines</span>&nbsp;<img
+                            src="img/logo.png" class="app-logo">
+                    </section>
+                    <section class="navbar-section">
+                        <a href="#" class="btn btn-link btn-sm">SIGN IN</a>
+                        <div class="input-group input-inline">
+                            <input class="form-input input-sm" type="text" placeholder="search">
+                            <button class="btn btn-primary input-group-btn btn-sm">Search</button>
                         </div>
-                    </div>
-                    <div class="panel-body">
-                        <div class="description auto-fill" data-bind="html:Model.landingConfig.content.description">
-                        </div>
-                        <div id="lp_form"></div>
-                    </div>
-                    <div class="panel-footer">
-                        <button id="lp_submit" class="btn btn-primary auto-fill" type="button"
-                            data-bind="html:Model.landingConfig.content.buttonLabel"></button>
+                    </section>
+                </header>
+                <div class="hero hero-sm">
+                    <div class="hero-body container">
+                        <ul class="tab tab-block">
+                            <li class="tab-item">
+                                <a href="#" data-link="menu_plantravel">Plan Travel</a>
+                            </li>
+                            <li class="tab-item">
+                                <a href="#" data-link="menu_travelinfo">Travel Information</a>
+                            </li>
+                            <li class="tab-item">
+                                <a href="#" data-link="menu_loyaltyprog" class="disabled">Loyalty program</a>
+                            </li>
+                        </ul>
                     </div>
                 </div>
-            </div>
-        </div>
-        <footer class="text-right">
-            <span class="note auto-fill" data-bind="html:Model.brandConfig.footer.note"></span>
-        </footer>
-    </div>
-    <div id="dashboard" class="hide">
-        <header class="navbar mdl-shadow--2dp">
-            <section class="navbar-section">
-                <img src="img/icon.png" class="logo auto-fill" data-bind="src:Model.brandConfig.header.logoUrl">
-                <span class="mdl-layout-title brand auto-fill"
-                    data-bind="html:Model.brandConfig.header.appTitle"></span>
-            </section>
-        </header>
-        <div class="container box-avail-ht">
-            <div class="columns">
-                <div id="call_panel" class="column col-12 col-xs-12 pad-top pad-bottom hide">
-                    <div class="panel mdl-shadow--2dp">
-                        <div class="panel-header">
-                            <div class="panel-title">Guest</div>
-                        </div>
-                        <div class="panel-nav">
-                            <div class="toast toast-primary">
-                                <button class="btn btn-clear float-right toast_close"></button>
-                                <span class="toast_message">Info, alert or feedback message</span>
-                            </div>
-                        </div>
-                        <div class="panel-body av-box">
-                            <div class="aver aver-success blink phone_ring"><i class="material-icons">phone_in_talk</i>
-                            </div>
-                            <div class="aver aver-error blink phone_cut"><i class="material-icons">phone_disabled</i>
-                            </div>
-                            <div class="aver aver-warning blink phone_call"><i class="material-icons">phone_callback</i>
-                            </div>
-                            <div class="aver aver-error blink phone_miss"><i class="material-icons">phone_missed</i>
-                            </div>
-                            <div class="aver aver-warning blink phone_hold"><i class="material-icons">phone_paused</i>
-                            </div>
-                            <div id="av_agent" class="av-box-content"></div>
-                            <div id="av_guest" class="av-box-content av-box-inset"></div>
-                        </div>
-                        <div class="panel-footer">
-                            <button class="btn btn-success call_start auto-fill"
-                                data-bind="title:Model.i18n.tooltipConnectCall"><i
-                                    class="material-icons">call</i></button>
-                            <button class="btn btn-silver call_hold auto-fill"
-                                data-bind="title:Model.i18n.tooltipHoldCall"><i
-                                    class="material-icons">phone_paused</i></button>
-                            <button class="btn btn-silver call_resume auto-fill"
-                                data-bind="title:Model.i18n.tooltipResumeCall"><i
-                                    class="material-icons">phone_callback</i></button>
-                            <button class="btn btn-silver call_mic_on auto-fill"
-                                data-bind="title:Model.i18n.tooltipMicrophoneOn"><i
-                                    class="material-icons">mic_off</i></button>
-                            <button class="btn btn-silver call_mic_off auto-fill"
-                                data-bind="title:Model.i18n.tooltipMicrophoneOff"><i
-                                    class="material-icons">mic</i></button>
-                            <button class="btn btn-silver call_camera_on auto-fill"
-                                data-bind="title:Model.i18n.tooltipCameraOn"><i
-                                    class="material-icons">videocam_off</i></button>
-                            <button class="btn btn-silver call_camera_off auto-fill"
-                                data-bind="title:Model.i18n.tooltipCameraOff"><i
-                                    class="material-icons">video_call</i></button>
-                            <button class="btn btn-silver call_screen_share_on auto-fill"
-                                data-bind="title:Model.i18n.tooltipScreenshareOn"><i
-                                    class="material-icons">stop_screen_share</i></button>
-                            <button class="btn btn-silver call_screen_share_off auto-fill"
-                                data-bind="title:Model.i18n.tooltipScreenshareOff"><i
-                                    class="material-icons">screen_share</i></button>
-                            <button class="btn btn-silver call_dialpad_show auto-fill"
-                                data-bind="title:Model.i18n.tooltipShowDialpad"><i
-                                    class="material-icons">dialpad</i></button>
-                            <button class="btn btn-silver call_audio_off auto-fill"
-                                data-bind="title:Model.i18n.tooltipSpeakerOff"><i
-                                    class="material-icons">volume_up</i></button>
-                            <button class="btn btn-silver call_audio_on auto-fill"
-                                data-bind="title:Model.i18n.tooltipSpeakerOn"><i
-                                    class="material-icons">volume_off</i></button>
-                            <button class="btn btn-silver call_video_off auto-fill"
-                                data-bind="title:Model.i18n.tooltipVideoOff"><i
-                                    class="material-icons">videocam</i></button>
-                            <button class="btn btn-silver call_video_on auto-fill"
-                                data-bind="title:Model.i18n.tooltipVideoOn"><i
-                                    class="material-icons">videocam_off</i></button>
-                            <button class="btn btn-error to-right call_stop auto-fill"
-                                data-bind="title:Model.i18n.tooltipDisconnectCall"><i
-                                    class="material-icons">call_end</i></button>
-                        </div>
+                <div id="menu_plantravel" class="columns menu menu-box">
+                    <div class="column col-3">
+                        <ul class="menu menu-col">
+                            <li class="menu-item"><a href="#" data-link="box_bookflight">Book Flight</a></li>
+                        </ul>
+                    </div>
+                    <div class="column col-3"></div>
+                    <div class="column col-3"></div>
+                    <div class="column col-3"></div>
+                </div>
+                <div id="menu_travelinfo" class="columns menu menu-box">
+                    <div class="column col-3"></div>
+                    <div class="column col-3">
+                        <ul class="menu menu-col">
+                            <li class="menu-item"><a href="#" data-link="box_baggage">Baggage</a></li>
+                            <li class="menu-item"><a href="#" data-link="box_specialcircumstances">Special
+                                    Circumstances</a></li>
+                            <li class="menu-item"><a href="#" class="disabled">International</a></li>
+                        </ul>
+                    </div>
+                    <div class="column col-3">
+                        <ul class="menu menu-col">
+                            <li class="menu-item"><a href="#" class="disabled">Airport Maps</a></li>
+                            <li class="menu-item"><a href="#" class="disabled">Special Fares</a></li>
+                        </ul>
+                    </div>
+                    <div class="column col-3">
+                        <button id="btn_contactus_1" class="btn btn-primary menu-btn">Contact Us</button>
                     </div>
                 </div>
-            </div>
-            <div class="modal modal-sm" id="dialpad_modal">
-                <div class="modal-overlay modal-close" aria-label="Close"></div>
-                <div class="modal-container">
-                    <div class="modal-header">
-                        <button class="btn btn-clear float-right modal-close" aria-label="Close"></button>
-                        <div class="modal-title h5 auto-fill" data-bind="html:Model.i18n.modalTitleDialpad">Dialpad
-                        </div>
+                <!-- <div id="menu_loyaltyprog" class="columns menu menu-box">
+                    <div class="column aln-hc">
+                        <span class="label label-rounded">N/A</span>
                     </div>
-                    <div class="modal-body">
-                        <div class="content">
-                            <div class="columns">
-                                <div class="column col-12">
-                                    <div class="display-box">
-                                        <span class="display-txt auto-fill"
-                                            data-bind="html:DialpadModal.displayContent"></span>
+                </div> -->
+                <div id="box_bookflight" class="menu-tab-content bnr-home">
+                    <div class="columns pad-tb">
+                        <div class="column col-2 col-xs-2"></div>
+                        <div class="column col-8 col-xs-8">
+                            <div class="panel">
+                                <div class="panel-body">
+                                    <ul class="tab tab-block">
+                                        <li class="tab-item active">
+                                            <a href="#" data-for="pnl_bookflight">Book</a>
+                                        </li>
+                                        <li class="tab-item">
+                                            <a href="#" data-for="pnl_flightstatus" class="disabled">Flight Status</a>
+                                        </li>
+                                        <li class="tab-item">
+                                            <a href="#" data-for="pnl_checkin" class="disabled">Check-in</a>
+                                        </li>
+                                        <li class="tab-item">
+                                            <a href="#" data-for="pnl_yourtrips" class="disabled">Your Trips</a>
+                                        </li>
+                                    </ul>
+                                    <div id="pnl_bookflight" class="tab-content">
+                                        <div class="columns">
+                                            <div class="column col-6">
+                                                <div class="form-group">
+                                                    <label class="form-radio form-inline">
+                                                        <input type="radio" name="gender" checked=""><i
+                                                            class="form-icon"></i>
+                                                        Roundtrip
+                                                    </label>
+                                                    <label class="form-radio form-inline">
+                                                        <input type="radio" name="gender"><i class="form-icon"></i>
+                                                        One-way
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="column col-6">
+                                                <div class="form-group">
+                                                    <label class="form-checkbox">
+                                                        <input type="checkbox">
+                                                        <i class="form-icon"></i> Book with miles
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="columns">
+                                            <div class="column col-6">
+                                                <div class="form-group">
+                                                    <label class="form-label">From</label>
+                                                    <div class="has-icon-right">
+                                                        <input class="form-input" type="text"
+                                                            placeholder="Departure city">
+                                                        <i class="form-icon icon icon-search"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="form-label">Depart</label>
+                                                    <input class="form-input" type="date" placeholder="mm/dd/yyyy">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="form-label">Travel Class</label>
+                                                    <select class="form-select">
+                                                        <option disabled>Travel Class</option>
+                                                        <option>Economy</option>
+                                                        <option>Premium Economy</option>
+                                                        <option>Business</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="column col-6">
+                                                <div class="form-group">
+                                                    <label class="form-label">To</label>
+                                                    <div class="has-icon-right">
+                                                        <input class="form-input" type="text"
+                                                            placeholder="Destination city">
+                                                        <i class="form-icon icon icon-search"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="form-label">Return</label>
+                                                    <input class="form-input" type="date" placeholder="mm/dd/yyyy">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="form-label">Passenger(s)</label>
+                                                    <select class="form-select">
+                                                        <option disabled>Passenger(s)</option>
+                                                        <option>1</option>
+                                                        <option>2</option>
+                                                        <option>3</option>
+                                                        <option>4</option>
+                                                        <option>5</option>
+                                                        <option>6</option>
+                                                        <option>7</option>
+                                                        <option>8</option>
+                                                        <option>9</option>
+                                                        <option>10</option>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group aln-rt">
+                                                    <button class="btn btn-primary">Find Flights</button>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="columns">
-                                <div class="column col-4">
-                                    <button class="btn btn-silver dialpad-key" type="button" value="1">1<sub>
-                                        </sub></button>
-                                </div>
-                                <div class="column col-4">
-                                    <button class="btn btn-silver dialpad-key" type="button"
-                                        value="2">2<sub>ABC</sub></button>
-                                </div>
-                                <div class="column col-4">
-                                    <button class="btn btn-silver dialpad-key" type="button"
-                                        value="3">3<sub>DEF</sub></button>
-                                </div>
-                            </div>
-                            <div class="columns">
-                                <div class="column col-4">
-                                    <button class="btn btn-silver dialpad-key" type="button"
-                                        value="4">4<sub>GHI</sub></button>
-                                </div>
-                                <div class="column col-4">
-                                    <button class="btn btn-silver dialpad-key" type="button"
-                                        value="5">5<sub>JKL</sub></button>
-                                </div>
-                                <div class="column col-4">
-                                    <button class="btn btn-silver dialpad-key" type="button"
-                                        value="6">6<sub>MNO</sub></button>
-                                </div>
-                            </div>
-                            <div class="columns">
-                                <div class="column col-4">
-                                    <button class="btn btn-silver dialpad-key" type="button"
-                                        value="7">7<sub>PQRS</sub></button>
-                                </div>
-                                <div class="column col-4">
-                                    <button class="btn btn-silver dialpad-key" type="button"
-                                        value="8">8<sub>TUV</sub></button>
-                                </div>
-                                <div class="column col-4">
-                                    <button class="btn btn-silver dialpad-key" type="button"
-                                        value="9">9<sub>WXYZ</sub></button>
-                                </div>
-                            </div>
-                            <div class="columns">
-                                <div class="column col-4">
-                                    <button class="btn btn-silver dialpad-key" type="button" value="*">*<sub>
-                                        </sub></button>
-                                </div>
-                                <div class="column col-4">
-                                    <button class="btn btn-silver dialpad-key" type="button" value="0">0<sub>
-                                        </sub></button>
-                                </div>
-                                <div class="column col-4">
-                                    <button class="btn btn-silver dialpad-key" type="button" value="#">#<sub>
-                                        </sub></button>
-                                </div>
-                            </div>
+                        </div>
+                        <div class="column col-2 col-xs-2"></div>
+                    </div>
+                </div>
+                <div id="box_baggage" class="menu-tab-content">
+                    <div class="columns pad-tb">
+                        <div class="column col-9 col-xs-9">
+                            <h5>Baggage</h5>
+                        </div>
+                        <div class="column col-3 col-xs-3 aln-rt">
+                            <button id="btn_contactus_2" class="btn btn-primary">Contact Us</button>
+                        </div>
+                    </div>
+                    <div class="columns pad-tb">
+                        <div class="column col-4 col-xs-4 aln-hc">
+                            <img src="img/checked-bags.jpg" class="img-responsive img-fit-contain" alt="">
+                            <button class="btn btn-link">Checked Bags</button>
+                        </div>
+                        <div class="column col-4 col-xs-4 aln-hc">
+                            <img src="img/carry-on-bags-for-cruisers.jpg" class="img-responsive img-fit-contain" alt="">
+                            <button class="btn btn-link">Carry on Bags</button>
+                        </div>
+                        <div class="column col-4 col-xs-4 aln-hc">
+                            <img src="img/baggage-lost-delay-damage.jpg" class="img-responsive img-fit-contain" alt="">
+                            <button class="btn btn-link">Delay, Lost, or Damaged Bags</button>
+                        </div>
+                    </div>
+                </div>
+                <div id="box_specialcircumstances" class="menu-tab-content">
+                    <div class="columns pad-tb">
+                        <div class="column col-9 col-xs-9">
+                            <h5>Special Circumstances</h5>
+                        </div>
+                        <div class="column col-3 col-xs-3 aln-rt">
+                            <button id="btn_contactus_3" class="btn btn-primary">Contact Us</button>
+                        </div>
+                    </div>
+                    <div class="columns pad-tb">
+                        <div class="column col-4 col-xs-4 aln-hc">
+                            <img src="img/unaccompanied-minors.jpg" class="img-responsive img-fit-contain" alt="">
+                            <button class="btn btn-link">Unaccompanied Minors</button>
+                        </div>
+                        <div class="column col-4 col-xs-4 aln-hc">
+                            <img src="img/senior-citizen-travellers.jpg" class="img-responsive img-fit-contain" alt="">
+                            <button class="btn btn-link">Senior Travelers</button>
+                        </div>
+                        <div class="column col-4 col-xs-4 aln-hc">
+                            <img src="img/travel-with-pets.jpg" class="img-responsive img-fit-contain" alt="">
+                            <button class="btn btn-link">Traveling with Pets</button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <footer class="text-right">
-            <span class="note auto-fill" data-bind="html:Model.brandConfig.footer.note"></span>
-        </footer>
     </div>
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://unpkg.com/is_js/is.min.js"></script>
-    <script src="https://unpkg.com/@kandy-io/callme-sdk@4.34.0/dist/kandy.js"></script>
-    <script src="js/main.js" type="module"></script>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="demo.js"></script>
 </body>
 
 </html>

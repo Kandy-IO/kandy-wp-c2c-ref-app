@@ -1,0 +1,68 @@
+header {
+    padding: 10px 10px;
+}
+
+.app-fn {
+    color: black;
+    font-weight: bold;
+    font-size: larger;
+}
+
+.app-ln {
+    color: grey;
+    font-weight: bold;
+    font-size: larger;
+}
+
+.app-logo {
+    width: 36px;
+}
+
+.aln-rt {
+    text-align: right;
+}
+
+.aln-hc {
+    text-align: center;
+}
+
+.pad-tb {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.bnr-home {
+    background-image: url(img/great-wall-of-china.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding-top: 6rem;
+}
+
+.bnr-home .panel {
+    background-color: white;
+}
+
+.tab-content {
+    padding: 10px 0;
+}
+
+.hero.hero-sm {
+    padding-bottom: 0;
+}
+
+.menu.menu-col {
+    box-shadow: none;
+}
+
+.menu.menu-box {
+    margin: 0 0 1rem 0;
+}
+
+.menu .menu-btn {
+    margin-top: 10px;
+}
+
+a.disabled {
+    pointer-events: none;
+    cursor: default;
+}
