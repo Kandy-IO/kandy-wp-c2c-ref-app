@@ -45,6 +45,7 @@ function initClient() {
         renderMedia(params.callId);
 
         if (call.state == "Ringing") {
+          log(`call coming from: ${call.remoteParticipant.displayName}(${call.remoteParticipant.displayNumber})`)
         }
 
         // If the call ended, stop tracking the callId.
@@ -79,7 +80,7 @@ function initClient() {
 
         // Retrieve call information.
         call = client.call.getById(params.callId);
-        log("Received incoming call");
+       // log("Received incoming call");
     });
 
 
