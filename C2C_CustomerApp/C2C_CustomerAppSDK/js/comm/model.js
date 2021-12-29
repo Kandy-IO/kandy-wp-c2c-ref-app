@@ -39,7 +39,8 @@ export const Model = {
     screenshare: null,
     actgBaseUrl: null,
     autoClose: null,
-    autoDial: null
+    autoDial: null,
+    lab: null
   },
 
   brandConfig: {

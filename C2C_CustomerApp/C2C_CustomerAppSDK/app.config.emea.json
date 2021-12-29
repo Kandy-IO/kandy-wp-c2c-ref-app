@@ -17,11 +17,11 @@
   "kandy": {
     "authentication": {
       "subscription": {
-        "server": "ct-webrtc.etisalat.ae",
+        "server": "webrtc-em.kandy.io",
         "port": "443"
       },
       "websocket": {
-        "server": "ct-webrtc.etisalat.ae",
+        "server": "webrtc-em.kandy.io",
         "port": "443"
       }
     },
@@ -44,18 +44,18 @@
       "earlyMedia": true,
       "iceServers": [
         {
-          "url": "turns:ct-turn1.etisalat.ae:443?transport=tcp",
+          "url": "turns:turn-em-1.kandy.io:443?transport=tcp",
           "credential": ""
         },
         {
-          "url": "turns:ct-turn2.etisalat.ae:443?transport=tcp",
+          "url": "turns:turn-em-2.kandy.io:443?transport=tcp",
           "credential": ""
         },
         {
-          "url": "stun:ct-turn1.etisalat.ae:3478?transport=udp"
+          "url": "stun:turn-em-1.kandy.io:3478?transport=udp"
         },
         {
-          "url": "stun:ct-turn2.etisalat.ae:3478?transport=udp"
+          "url": "stun:turn-em-2.kandy.io:3478?transport=udp"
         }
       ]
     },

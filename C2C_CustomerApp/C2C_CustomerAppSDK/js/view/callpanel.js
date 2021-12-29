@@ -192,10 +192,11 @@ export class CallPanel {
 
     this.control.callMic.enable()
     this.control.callCamera.enable()
+    this.control.callFlow.enable()
     this.control.callScreenshare.enable()
     this.control.callDialpad.enable()
 
-    this.control.callFlow.hide()
+    //this.control.callFlow.hide()
     this.control.callMic.hide()
     this.control.callCamera.hide()
     this.control.callScreenshare.hide()

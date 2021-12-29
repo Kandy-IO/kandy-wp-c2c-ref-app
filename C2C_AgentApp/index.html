@@ -17,6 +17,11 @@
         <h2>Agent App</h2>
         <div class="col-md-6">
             <div>
+            <label for="lab"><h4>Select Lab:</label>
+             <select name="lab" id="lab">
+               <option value="KBS UAE">KBS UAE</option>
+               <option value="KBS EMEA">KBS EMEA</option>
+            </select>
                 <h4>Authenticate using your account information</h4>
                 <div id="passwordID">
                     <ul>
@@ -44,14 +49,18 @@
                     <button class="btn-sm" type="button" onclick="answerCall()">Answer Call</button>
                     <label>with video</label>
                     <input type="checkbox" id="answer-with-video" checked />
+                    <button class="btn-sm" type="button" onclick="rejectCall()">Reject Call</button>
                 </p>
             </div>
             <!-- User input for responding to an incoming call. -->
             <div>
                 <h4>Mid-Call Operations</h4>
                 <p>
-                    <button class="btn-sm" type="button" onclick="HoldCall()">Hold Call</button>
+                    <button class="btn-sm" type="button" id = 'HoldBtn' onclick="HoldCall()">Hold Call</button>
                     <button class="btn-sm" type="button" onclick="UnholdCall()">Unhold Call</button>
+
+                     <button class="btn-sm" type="button" onclick="MuteCall()">Mute Call</button>
+                     <button class="btn-sm" type="button" onclick="UnmuteCall()">Unmute Call</button>
                 </p>
             </div>
             <!-- User input for ending an ongoing call. -->
@@ -71,6 +80,7 @@
                 <div id="local-container" class="box"></div>
             </div>
         </div>
+        <button class="btn-sm" type="button" onclick="clearLog()">Clear Log</button>
         <!-- Log views. -->
         <div class="col-md-6 terminal-wrapper">
             <h4><b>Terminal</b></h4>
@@ -79,7 +89,9 @@
     </div>
     <!-- <script src="https://unpkg.com/@kandy-io/cpaas-sdk/dist/kandy.js" crossorigin="anonymous"></script> -->
     <script src="https://unpkg.com/@kandy-io/link-sdk/dist/kandy.js" crossorigin="anonymous"></script>
+    <script src="js/lab.js"></script>
     <script type="text/javascript" src="etisalatConfig.json"></script>
+    <script type="text/javascript" src="emeaConfig.json"></script>
     <script src="js/utility.js"></script>
     <script src="js/app.js"></script>
 </body>

@@ -80,7 +80,7 @@ export class AVControl {
   }
   defaultState() {
     this.callPhase.setState(true)
-    this.callFlow.setState(false)
+    this.callFlow.setState(true)
     this.callMic.setState(true)
     this.callCamera.setState(false)
     this.callScreenshare.setState(true)
@@ -128,7 +128,7 @@ export class AVControl {
     console.log('AVControl.initialize')
 
     this.callPhase.initialize('.call_start', '.call_stop')
-    this.callFlow.initialize('.call_resume', '.call_hold')
+    this.callFlow.initialize('.call_hold', '.call_resume')
     this.callMic.initialize('.call_mic_on', '.call_mic_off', Model.preference.microphone)
     this.callCamera.initialize('.call_camera_on', '.call_camera_off', Model.preference.camera)
     this.callScreenshare.initialize('.call_screen_share_on', '.call_screen_share_off', Model.preference.screenshare)

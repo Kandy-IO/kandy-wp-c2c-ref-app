@@ -77,7 +77,21 @@ export class Splash {
       }
     )
   }
+  setAppConfigFile(lab) {
+    switch (lab) {
+      case 'uae':
+        this.F__APP_CONFIG = 'app.config.json'
+        break;
+      case 'emea':
+        this.F__APP_CONFIG = 'app.config.emea.json'
+        break;
+      default:
+        this.F__APP_CONFIG = 'app.config.json'
+    }
+  }
+
   loadAppConfig(uid) {
+    this.setAppConfigFile(Model.queryParams.lab)
     $.getJSON(this.F__APP_CONFIG, data => {
       Model.actgConfig = data.actg
       if (!!Model.queryParams.actgBaseUrl) {
@@ -297,6 +311,7 @@ export class Splash {
   actOnQueryParams() {
     let usp = new URLSearchParams(window.location.search)
     Model.queryParams.identifier = usp.get('i') || null
+    Model.queryParams.lab = usp.get('lb') || null
     this.defaultLanguageCode = Model.queryParams.languageCode
     Model.queryParams.languageCode = usp.get('l') || I18N.getNavigatorLanguage() || this.defaultLanguageCode
     Model.queryParams.tokenized = String(usp.get('t')).toBool()

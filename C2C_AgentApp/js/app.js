@@ -6,16 +6,27 @@ var modelConfig, client;
 whenReady(loadConfig);
 
 function loadConfig() {
-    try {
-
-        modelConfig = JSON.parse(etisalatConfig);
-
-    } catch (error) {
-        logError("Something went wrong");
-    }
 }
 
 function initClient() {
+     let config;
+
+      switch(document.getElementById('lab').value) {
+       case 'KBS UAE':
+          config = etisalatConfig
+        break;
+        case 'KBS EMEA':
+          config = emeaConfig
+        break;
+        default:
+         config = etisalatConfig
+    }
+    try {
+        modelConfig = JSON.parse(config);
+    } catch (error) {
+        logError("Something went wrong");
+    }
+
     client = Kandy.create(modelConfig.kandy);
 
     client.on("request:error", function () {
@@ -51,13 +62,11 @@ function initClient() {
         // If the call ended, stop tracking the callId.
         if (call.state === "Ended") {
             callId = null;
-            sendDebugLog(collectedDebugLogs);
+      
         }
 
-        logState(call.state);
-
         if (call.state === "Connected") {
-            endCall();
+            
         }
     });
 
@@ -158,23 +167,25 @@ function subscribe() {
   const services = ["call"];
   const subscriptionType = "websocket";
   client.services.subscribe(services, subscriptionType);
-  log("Subscribed to call service (websocket channel)");
+  log("Subscribing to call service (websocket channel)");
 }
 
 async function loginSubscribe() {
-  initClient();
 
   const userEmail = document.getElementById('userEmail').value
   const password = document.getElementById('password').value
+  if(password && userEmail) {
+      initClient();
+      client.setCredentials({
+          username: userEmail,
+          password: password,
+          authname: "",
+          bearerAccessToken: ""
+      });
 
-  client.setCredentials({
-      username: userEmail,
-      password: password,
-      authname: "",
-      bearerAccessToken: ""
-  });
+    subscribe();
+  }
 
-  subscribe();
 }
 
 // Utility function for appending messages to the message div.
@@ -192,8 +203,10 @@ function logError(...message) {
 //   logInfoError(msg);
   document.getElementById("terminal").innerHTML += "<p>" + msg + "</p>";
 }
-
-
+  
+function clearLog() {
+  document.getElementById("terminal").innerHTML = ''
+}
 
 //=====
 
@@ -220,6 +233,15 @@ function endCall() {
   log('Ending call')
 
   client.call.end(callId)
+}
+
+// Reject an incoming call.
+function rejectCall() {
+  // Retrieve call state.
+  let call = client.call.getById(callId)
+  log('Rejecting call')
+
+  client.call.reject(callId)
 }
 
 // Answer an incoming call.
@@ -252,5 +274,37 @@ function UnholdCall(){
   
 }
 
-//https://ct-webrtc.etisalat.ae/rest/version/1/user/u_97127712292@instapract.etisalat.ae/subscription
-//https://spidr-ap.genband.com/rest/version/1/user/u_97127712292@instapract.etisalat.ae/subscription
+function UnmuteCall(){
+    const call = client.call.getById(callId)
+    const localAudioTracks = this.getAudioTracks(call, true)
+    if (localAudioTracks.length > 0) {
+        const audioTrackIds = localAudioTracks.reduce((ts, t) => ts.concat(t.trackId), [])
+        console.log('micOff, unmuting tracks: ', audioTrackIds)
+        client.media.unmuteTracks(audioTrackIds)
+      }
+}
+
+function MuteCall(){
+    const call = client.call.getById(callId)
+    const localAudioTracks = this.getAudioTracks(call, true)
+      if (localAudioTracks.length > 0) {
+        const audioTrackIds = localAudioTracks.reduce((ts, t) => ts.concat(t.trackId), [])
+        console.log('micOn, muting tracks: ', audioTrackIds)
+        client.media.muteTracks(audioTrackIds)
+      }
+}
+
+ function getAudioTracks(call, localAudio) {
+    console.log('Communicator.getAudioTracks')
+    let tracks = []
+    const allTracks = localAudio ? call.localTracks : call.remoteTracks
+    if (allTracks == call.localTracks) {
+      allTracks.forEach(t => {
+        const thisTrack = this.client.media.getTrackById(t)
+        if (!!thisTrack && thisTrack.kind == 'audio') {
+          tracks.push(thisTrack)
+        }
+      })
+    }
+    return tracks
+  }
