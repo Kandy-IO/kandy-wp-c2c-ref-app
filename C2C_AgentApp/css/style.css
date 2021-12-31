@@ -65,3 +65,26 @@ body {
 .notification .close:hover {
     color: darkgrey;
 }
+
+header{
+    background-color:#3385ff;
+    text-align: center; 
+    height: 50px; 
+    margin:0;
+    padding:0;
+    font-size: 35px;
+    font-weight: bold;
+    color: white;
+}
+
+
+.btn-sm {
+    border: 2px solid #3385ff;
+    background-color: white;
+    color: black;
+    padding: 14px 28px;
+    font-size: 16px;
+    cursor: pointer;
+    font-weight: bold;
+}
+

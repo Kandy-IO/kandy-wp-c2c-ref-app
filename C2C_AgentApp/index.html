@@ -8,86 +8,78 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 
+<header>AGENT APP</header>
 <body>
-    <!-- <div class="notification">
-        <span class="message">You agree that by accessing the Application, you have permitted the use of <a href="https://github.com/Kandy-IO/kandy-cpaas-js-sdk" title="Kandy CPaaS JavaScript SDK">Kandy CPaaS JavaScript SDK</a> and bound by their <a href="https://github.com/Kandy-IO/kandy-cpaas-js-sdk/blob/master/LICENSE.md" title="License">License</a> agreement.</span>
-        <span class="close">&times;</span>
-    </div> -->
     <div class="col-md-10 matter">
-        <h2>Agent App</h2>
         <div class="col-md-6">
-            <div>
-            <label for="lab"><h4>Select Lab:</label>
-             <select name="lab" id="lab">
-               <option value="KBS UAE">KBS UAE</option>
-               <option value="KBS EMEA">KBS EMEA</option>
-            </select>
-                <h4>Authenticate using your account information</h4>
-                <div id="passwordID">
-                    <ul>
-                        <!-- <li>
-                            <label>Client ID:</label>
-                            <input type="text" id="clientId" />
-                        </li> -->
-                        <li>
-                            <label>User Name:</label>
-                            <input type="text" id="userEmail" placeholder="UserName" />
-                        </li>
-                        <li>
-                            <label>Password:</label>
-                            <input type="password" id="password" placeholder="Password" />
-                        </li>
-                    </ul>
-                    <h4>Login/Subscribe To Call Service Websocket Channel</h4>
-                    <button class="btn-sm" type="button" onclick="loginSubscribe()" id="loginBySubscribeBtn">Login/Subscribe</button>
-                </div>
-            </div>
-            <!-- User input for responding to an incoming call. -->
-            <div>
-                <h4>Respond to a Call</h4>
-                <p>
-                    <button class="btn-sm" type="button" onclick="answerCall()">Answer Call</button>
-                    <label>with video</label>
-                    <input type="checkbox" id="answer-with-video" checked />
-                    <button class="btn-sm" type="button" onclick="rejectCall()">Reject Call</button>
+            <fieldset>
+                <legend>Select Lab:</legend>
+                <select name="lab" id="lab">
+                    <option value="KBS UAE">KBS UAE</option>
+                    <option value="KBS EMEA">KBS EMEA</option>
+                </select>
+            </fieldset>
+            </br>
+            
+            <fieldset>
+                <legend>Authenticate using your account information</legend>
+                <label>User Name:</label>
+                <input type="text" id="userEmail" placeholder="UserName" />
                 </p>
-            </div>
-            <!-- User input for responding to an incoming call. -->
-            <div>
-                <h4>Mid-Call Operations</h4>
-                <p>
-                    <button class="btn-sm" type="button" id = 'HoldBtn' onclick="HoldCall()">Hold Call</button>
-                    <button class="btn-sm" type="button" onclick="UnholdCall()">Unhold Call</button>
+                <label>Password:</label>
+                <input type="password" id="password" placeholder="Password" />
+            </fieldset>
+            </br> 
+            <fieldset>
+                <legend>Login/Subscribe To Call Service Websocket Channel</legend>
+                <button class="btn-sm" type="button" onclick="loginSubscribe()" id="loginBySubscribeBtn">Login/Subscribe</button>
+            </fieldset>     
+            </br> 
 
-                     <button class="btn-sm" type="button" onclick="MuteCall()">Mute Call</button>
-                     <button class="btn-sm" type="button" onclick="UnmuteCall()">Unmute Call</button>
-                </p>
-            </div>
+            <!-- User input for responding to an incoming call. -->
+            <fieldset>
+                <legend>Respond to a Call</legend>
+                <button class="btn-sm" type="button" onclick="answerCall()">Answer Call</button>
+                <label>with video</label>
+                <input type="checkbox" id="answer-with-video" checked />
+                <button class="btn-sm" type="button" onclick="rejectCall()">Reject Call</button>
+            </fieldset>
+            </br>  
+            
+            <!-- User input for responding to an incoming call. -->
+            <fieldset>
+                <legend>Mid-Call Operations</legend>
+                <button class="btn-sm" type="button" id = 'HoldBtn' onclick="HoldCall()">Hold Call</button>
+                <button class="btn-sm" type="button" onclick="UnholdCall()">Unhold Call</button>
+                <button class="btn-sm" type="button" onclick="MuteCall()">Mute Call</button>
+                <button class="btn-sm" type="button" onclick="UnmuteCall()">Unmute Call</button>
             <!-- User input for ending an ongoing call. -->
-            <div>
-                <h4>End a Call</h4>
-                <p>
-                    <button class="btn-sm" type="button" onclick="endCall()">End Call</button>
-                </p>
-            </div>
-
-            <div>
-                <h4>Remote video: </h4>
+            </fieldset>
+            </br> 
+            <fieldset>
+                <legend>End Call</legend>
+                <button class="btn-sm" type="button" onclick="endCall()">End Call</button>
+            </fieldset>
+            </br>
+            <fieldset>
+                <legend>Remote video: </legend>
                 <div id="remote-container" class="box"></div>
-            </div>
-            <div>
-                <h4>Local video: </h4>
+            </fieldset>
+            </br>
+            <fieldset>
+                <legend>Local video:</legend>
                 <div id="local-container" class="box"></div>
-            </div>
+            </fieldset>
         </div>
+        </br>
+        
+        <div class="col-md-6 terminal-wrapper">
         <button class="btn-sm" type="button" onclick="clearLog()">Clear Log</button>
         <!-- Log views. -->
-        <div class="col-md-6 terminal-wrapper">
             <h4><b>Terminal</b></h4>
             <div id="terminal"></div>
         </div>
     </div>
-    <!-- <script src="https://unpkg.com/@kandy-io/cpaas-sdk/dist/kandy.js" crossorigin="anonymous"></script> -->
     <script src="https://unpkg.com/@kandy-io/link-sdk/dist/kandy.js" crossorigin="anonymous"></script>
     <script src="js/lab.js"></script>
     <script type="text/javascript" src="etisalatConfig.json"></script>
