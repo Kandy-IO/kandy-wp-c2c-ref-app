@@ -1,4 +1,4 @@
-const c2cHostURL = 'http://localhost:8080/' //window.location.pathname + '/C2C_CustomerAppSDK/'
+const c2cHostURL = window.location.pathname + '/C2C_CustomerAppSDK/'
 let lab = 'uae'
 
 function toURLQuery(json) {
