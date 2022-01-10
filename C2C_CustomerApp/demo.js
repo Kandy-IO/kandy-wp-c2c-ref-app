@@ -1,15 +1,11 @@
-const c2cHostURL = window.location.pathname + '/C2C_CustomerAppSDK/'
-let lab = 'uae'
+const c2cHostURL = window.location.pathname + 'C2C_CustomerAppSDK/'
+//let lab = 'uae'
 
 function toURLQuery(json) {
   return Object.keys(json)
     .map(k => String(encodeURIComponent(k) + '=' + encodeURIComponent(json[k])))
     .join('&')
 }
-// function getLabName() {
-//  lab = prompt("Please enter lab", "uae");
-//   console.log(lab)
-// }
 
 function openC2C(identifier, lab, langCode) {
   let payload = {
@@ -35,21 +31,9 @@ $(e => {
     $('.menu-tab-content').hide()
     $('#' + $(e.target).data('link')).show()
   })
-  // Bridges
-  $('#btn_contactus_1').on('click', e => openC2C('non-tokenized-with-landingpage', lab, 'en-US'))
-  $('#btn_contactus_2').on('click', e => openC2C('non-tokenized-with-landingpage', lab, 'en-US')) // with baggage no.
-  $('#btn_contactus_3').on('click', e => openC2C('non-tokenized-with-landingpage', lab, 'en-US'))
 
-  // $("#btn_contactus_1").click(function(){
-  //    getLabName()
-  //    openC2C('non-tokenized-with-landingpage', lab, 'en-US')
-  //   });
-  //  $("#btn_contactus_2").click(function(){
-  //    getLabName()
-  //    openC2C('non-tokenized-with-landingpage', lab, 'en-US')
-  //   });
-  //  $("#btn_contactus_3").click(function(){
-  //    getLabName()
-  //    openC2C('non-tokenized-with-landingpage', lab, 'en-US')
-  //   });
+  $("#btn_contactus_1").click(function () {
+    
+    openC2C('non-tokenized-with-landingpage', document.getElementById("selectLab").value, 'en-US')
+  });
 })

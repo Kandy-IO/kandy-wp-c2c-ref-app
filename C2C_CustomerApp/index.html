@@ -6,7 +6,7 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="robots" content="index, follow">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Demo</title>
+    <title>Avrum Airlines</title>
     <meta name="description" content="A demo page tp showcase C2C reference webapp">
     <link rel="shortcut icon" href="img/favicon.ico">
     <link rel="icon" href="img/logo.png">
@@ -14,9 +14,24 @@
     <link rel="stylesheet" type="text/css" href="https://unpkg.com/spectre.css/dist/spectre-exp.min.css">
     <link rel="stylesheet" type="text/css" href="https://unpkg.com/spectre.css/dist/spectre-icons.min.css">
     <link rel="stylesheet" type="text/css" href="demo.css">
+    <link rel="stylesheet" type="text/css" href="box.css">
 </head>
+<div id="myOverlay" class="overlay">
+    <span class="closebtn" onclick="closeLabPopup()" title="Close Overlay">×</span>
+    <div class="overlay-content">
+        <form>
+            <select class="s" id="selectLab">
+                <option value="uae">UAE</option>
+                <option value="emea">EMEA</option>
+            </select>
+            <button type="submit" id="btn_contactus_1" class="sbtn">Submit</button>
+        </form>
+    </div>
+</div>
 
 <body>
+
+
     <!--[if lte IE 9]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
         <![endif]-->
@@ -80,7 +95,7 @@
                         </ul>
                     </div>
                     <div class="column col-3">
-                        <button id="btn_contactus_1" class="btn btn-primary menu-btn">Contact Us</button>
+                        <a onclick="openLabPopup()" class="btn btn-primary menu-btn">Contact Us</a>
                     </div>
                 </div>
                 <!-- <div id="menu_loyaltyprog" class="columns menu menu-box">
@@ -203,7 +218,7 @@
                             <h5>Baggage</h5>
                         </div>
                         <div class="column col-3 col-xs-3 aln-rt">
-                            <button id="btn_contactus_2" class="btn btn-primary">Contact Us</button>
+                            <button onclick="openLabPopup()" class="btn btn-primary">Contact Us</button>
                         </div>
                     </div>
                     <div class="columns pad-tb">
@@ -227,7 +242,7 @@
                             <h5>Special Circumstances</h5>
                         </div>
                         <div class="column col-3 col-xs-3 aln-rt">
-                            <button id="btn_contactus_3" class="btn btn-primary">Contact Us</button>
+                            <button onclick="openLabPopup()" class="btn btn-primary">Contact Us</button>
                         </div>
                     </div>
                     <div class="columns pad-tb">
@@ -249,8 +264,19 @@
         </div>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <script src="demo.js"></script>
+    <script>
+        function openLabPopup() {
+            document.getElementById("myOverlay").style.display = "block";
+        }
+
+        function closeLabPopup() {
+            document.getElementById("myOverlay").style.display = "none";
+        }
+
+    </script>
 </body>
 
 </html>
