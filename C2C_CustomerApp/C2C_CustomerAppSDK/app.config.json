@@ -71,7 +71,7 @@
     "microphone": true,
     "camera": true,
     "screenshare": false,
-    "autoClose": true,
+    "autoClose": false,
     "autoDial": true
   },
   "identifier": {
