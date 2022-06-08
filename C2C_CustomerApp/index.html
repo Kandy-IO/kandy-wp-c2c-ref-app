@@ -1,0 +1,282 @@
+<!doctype html>
+<html class="no-js" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="robots" content="index, follow">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Avrum Airlines</title>
+    <meta name="description" content="A demo page tp showcase C2C reference webapp">
+    <link rel="shortcut icon" href="img/favicon.ico">
+    <link rel="icon" href="img/logo.png">
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/spectre.css/dist/spectre-exp.min.css">
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/spectre.css/dist/spectre-icons.min.css">
+    <link rel="stylesheet" type="text/css" href="demo.css">
+    <link rel="stylesheet" type="text/css" href="box.css">
+</head>
+<div id="myOverlay" class="overlay">
+    <span class="closebtn" onclick="closeLabPopup()" title="Close Overlay">×</span>
+    <div class="overlay-content">
+        <form>
+            <select class="s" id="selectLab">
+                <option value="uae">UAE</option>
+                <option value="emea">EMEA</option>
+            </select>
+            <button type="submit" id="btn_contactus_1" class="sbtn">Submit</button>
+        </form>
+    </div>
+</div>
+
+<body>
+
+
+    <!--[if lte IE 9]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+        <![endif]-->
+
+    <!-- Add your site or application content here -->
+    <div class="container grid-lg">
+        <div class="columns">
+            <div class="column">
+                <header class="navbar">
+                    <section class="navbar-section">
+                        <span class="app-fn">Avrum</span>&nbsp;<span class="app-ln">Airlines</span>&nbsp;<img
+                            src="img/logo.png" class="app-logo">
+                    </section>
+                    <section class="navbar-section">
+                        <a href="#" class="btn btn-link btn-sm">SIGN IN</a>
+                        <div class="input-group input-inline">
+                            <input class="form-input input-sm" type="text" placeholder="search">
+                            <button class="btn btn-primary input-group-btn btn-sm">Search</button>
+                        </div>
+                    </section>
+                </header>
+                <div class="hero hero-sm">
+                    <div class="hero-body container">
+                        <ul class="tab tab-block">
+                            <li class="tab-item">
+                                <a href="#" data-link="menu_plantravel">Plan Travel</a>
+                            </li>
+                            <li class="tab-item">
+                                <a href="#" data-link="menu_travelinfo">Travel Information</a>
+                            </li>
+                            <li class="tab-item">
+                                <a href="#" data-link="menu_loyaltyprog" class="disabled">Loyalty program</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div id="menu_plantravel" class="columns menu menu-box">
+                    <div class="column col-3">
+                        <ul class="menu menu-col">
+                            <li class="menu-item"><a href="#" data-link="box_bookflight">Book Flight</a></li>
+                        </ul>
+                    </div>
+                    <div class="column col-3"></div>
+                    <div class="column col-3"></div>
+                    <div class="column col-3"></div>
+                </div>
+                <div id="menu_travelinfo" class="columns menu menu-box">
+                    <div class="column col-3"></div>
+                    <div class="column col-3">
+                        <ul class="menu menu-col">
+                            <li class="menu-item"><a href="#" data-link="box_baggage">Baggage</a></li>
+                            <li class="menu-item"><a href="#" data-link="box_specialcircumstances">Special
+                                    Circumstances</a></li>
+                            <li class="menu-item"><a href="#" class="disabled">International</a></li>
+                        </ul>
+                    </div>
+                    <div class="column col-3">
+                        <ul class="menu menu-col">
+                            <li class="menu-item"><a href="#" class="disabled">Airport Maps</a></li>
+                            <li class="menu-item"><a href="#" class="disabled">Special Fares</a></li>
+                        </ul>
+                    </div>
+                    <div class="column col-3">
+                        <a onclick="openLabPopup()" class="btn btn-primary menu-btn">Contact Us</a>
+                    </div>
+                </div>
+                <!-- <div id="menu_loyaltyprog" class="columns menu menu-box">
+                    <div class="column aln-hc">
+                        <span class="label label-rounded">N/A</span>
+                    </div>
+                </div> -->
+                <div id="box_bookflight" class="menu-tab-content bnr-home">
+                    <div class="columns pad-tb">
+                        <div class="column col-2 col-xs-2"></div>
+                        <div class="column col-8 col-xs-8">
+                            <div class="panel">
+                                <div class="panel-body">
+                                    <ul class="tab tab-block">
+                                        <li class="tab-item active">
+                                            <a href="#" data-for="pnl_bookflight">Book</a>
+                                        </li>
+                                        <li class="tab-item">
+                                            <a href="#" data-for="pnl_flightstatus" class="disabled">Flight Status</a>
+                                        </li>
+                                        <li class="tab-item">
+                                            <a href="#" data-for="pnl_checkin" class="disabled">Check-in</a>
+                                        </li>
+                                        <li class="tab-item">
+                                            <a href="#" data-for="pnl_yourtrips" class="disabled">Your Trips</a>
+                                        </li>
+                                    </ul>
+                                    <div id="pnl_bookflight" class="tab-content">
+                                        <div class="columns">
+                                            <div class="column col-6">
+                                                <div class="form-group">
+                                                    <label class="form-radio form-inline">
+                                                        <input type="radio" name="gender" checked=""><i
+                                                            class="form-icon"></i>
+                                                        Roundtrip
+                                                    </label>
+                                                    <label class="form-radio form-inline">
+                                                        <input type="radio" name="gender"><i class="form-icon"></i>
+                                                        One-way
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="column col-6">
+                                                <div class="form-group">
+                                                    <label class="form-checkbox">
+                                                        <input type="checkbox">
+                                                        <i class="form-icon"></i> Book with miles
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="columns">
+                                            <div class="column col-6">
+                                                <div class="form-group">
+                                                    <label class="form-label">From</label>
+                                                    <div class="has-icon-right">
+                                                        <input class="form-input" type="text"
+                                                            placeholder="Departure city">
+                                                        <i class="form-icon icon icon-search"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="form-label">Depart</label>
+                                                    <input class="form-input" type="date" placeholder="mm/dd/yyyy">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="form-label">Travel Class</label>
+                                                    <select class="form-select">
+                                                        <option disabled>Travel Class</option>
+                                                        <option>Economy</option>
+                                                        <option>Premium Economy</option>
+                                                        <option>Business</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="column col-6">
+                                                <div class="form-group">
+                                                    <label class="form-label">To</label>
+                                                    <div class="has-icon-right">
+                                                        <input class="form-input" type="text"
+                                                            placeholder="Destination city">
+                                                        <i class="form-icon icon icon-search"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="form-label">Return</label>
+                                                    <input class="form-input" type="date" placeholder="mm/dd/yyyy">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="form-label">Passenger(s)</label>
+                                                    <select class="form-select">
+                                                        <option disabled>Passenger(s)</option>
+                                                        <option>1</option>
+                                                        <option>2</option>
+                                                        <option>3</option>
+                                                        <option>4</option>
+                                                        <option>5</option>
+                                                        <option>6</option>
+                                                        <option>7</option>
+                                                        <option>8</option>
+                                                        <option>9</option>
+                                                        <option>10</option>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group aln-rt">
+                                                    <button class="btn btn-primary">Find Flights</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="column col-2 col-xs-2"></div>
+                    </div>
+                </div>
+                <div id="box_baggage" class="menu-tab-content">
+                    <div class="columns pad-tb">
+                        <div class="column col-9 col-xs-9">
+                            <h5>Baggage</h5>
+                        </div>
+                        <div class="column col-3 col-xs-3 aln-rt">
+                            <button onclick="openLabPopup()" class="btn btn-primary">Contact Us</button>
+                        </div>
+                    </div>
+                    <div class="columns pad-tb">
+                        <div class="column col-4 col-xs-4 aln-hc">
+                            <img src="img/checked-bags.jpg" class="img-responsive img-fit-contain" alt="">
+                            <button class="btn btn-link">Checked Bags</button>
+                        </div>
+                        <div class="column col-4 col-xs-4 aln-hc">
+                            <img src="img/carry-on-bags-for-cruisers.jpg" class="img-responsive img-fit-contain" alt="">
+                            <button class="btn btn-link">Carry on Bags</button>
+                        </div>
+                        <div class="column col-4 col-xs-4 aln-hc">
+                            <img src="img/baggage-lost-delay-damage.jpg" class="img-responsive img-fit-contain" alt="">
+                            <button class="btn btn-link">Delay, Lost, or Damaged Bags</button>
+                        </div>
+                    </div>
+                </div>
+                <div id="box_specialcircumstances" class="menu-tab-content">
+                    <div class="columns pad-tb">
+                        <div class="column col-9 col-xs-9">
+                            <h5>Special Circumstances</h5>
+                        </div>
+                        <div class="column col-3 col-xs-3 aln-rt">
+                            <button onclick="openLabPopup()" class="btn btn-primary">Contact Us</button>
+                        </div>
+                    </div>
+                    <div class="columns pad-tb">
+                        <div class="column col-4 col-xs-4 aln-hc">
+                            <img src="img/unaccompanied-minors.jpg" class="img-responsive img-fit-contain" alt="">
+                            <button class="btn btn-link">Unaccompanied Minors</button>
+                        </div>
+                        <div class="column col-4 col-xs-4 aln-hc">
+                            <img src="img/senior-citizen-travellers.jpg" class="img-responsive img-fit-contain" alt="">
+                            <button class="btn btn-link">Senior Travelers</button>
+                        </div>
+                        <div class="column col-4 col-xs-4 aln-hc">
+                            <img src="img/travel-with-pets.jpg" class="img-responsive img-fit-contain" alt="">
+                            <button class="btn btn-link">Traveling with Pets</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="demo.js"></script>
+    <script>
+        function openLabPopup() {
+            document.getElementById("myOverlay").style.display = "block";
+        }
+
+        function closeLabPopup() {
+            document.getElementById("myOverlay").style.display = "none";
+        }
+
+    </script>
+</body>
+
+</html>

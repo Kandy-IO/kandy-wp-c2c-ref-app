@@ -1,0 +1,229 @@
+{
+  "actg": {
+    "baseUrl": "http://actg.domain.com",
+    "api": {
+      "token": "/actg/token?identifier=[destId]"
+    }
+  },
+  "brand": {
+    "header": {
+      "logoUrl": "img/icon.png",
+      "appTitle": "i18n|headerAppTitle"
+    },
+    "footer": {
+      "note": "i18n|footerNote"
+    }
+  },
+  "kandy": {
+    "authentication": {
+      "subscription": {
+        "server": "webrtc-em.kandy.io",
+        "port": "443"
+      },
+      "websocket": {
+        "server": "webrtc-em.kandy.io",
+        "port": "443"
+      }
+    },
+    "call": {
+      "removeCodecs": [
+        "opus",
+        "G722",
+        "VP8",
+        "VP9",
+        "ISAC",
+        "CN",
+        {
+          "name": "H264",
+          "fmtpParams": [
+            "packetization-mode=0"
+          ]
+        }
+      ],
+      "removeH264Codecs": false,
+      "earlyMedia": true,
+      "iceServers": [
+        {
+          "url": "turns:turn-em-1.kandy.io:443?transport=tcp",
+          "credential": ""
+        },
+        {
+          "url": "turns:turn-em-2.kandy.io:443?transport=tcp",
+          "credential": ""
+        },
+        {
+          "url": "stun:turn-em-1.kandy.io:3478?transport=udp"
+        },
+        {
+          "url": "stun:turn-em-2.kandy.io:3478?transport=udp"
+        }
+      ]
+    },
+    "logs": {
+      "logLevel": "debug",
+      "logActions": {
+        "actionOnly": false,
+        "exposePayloads": true
+      }
+    }
+  },
+  "preference": {
+    "microphone": true,
+    "camera": true,
+    "screenshare": false,
+    "autoClose": false,
+    "autoDial": true
+  },
+  "identifier": {
+    "non-tokenized-without-landingpage": {
+      "landingPage": {
+        "enabled": false
+      },
+      "connect": {
+        "callee": "97127712292@instapract.etisalat.ae",
+        "tokenized": false,
+        "callOptions": {
+          "from": "sip:anonymous@invalid.com",
+          "audio": true,
+          "video": false,
+          "videoOptions": {
+            "width": 480,
+            "height": 360
+          },
+          "customParameters": []
+        }
+      },
+      "preference": {
+        "microphone": true,
+        "camera": false,
+        "screenshare": false
+      }
+    },
+    "non-tokenized-with-landingpage": {
+      "landingPage": {
+        "enabled": true,
+        "content": {
+          "title": "i18n|titleWelcome",
+          "description": "i18n|descriptionFillUpForm",
+          "inputField": [
+            {
+              "id": "x-callee",
+              "label": "i18n|labelCallee",
+              "hint": "i18n|hintCallee",
+              "match": "^[a-zA-Z0-9 ._-]{3,50}$",
+              "tip": "i18n|tipCallee",
+              "errmsg": "i18n|errmsgFullname"
+            },
+            {
+              "id": "x-fullname",
+              "label": "i18n|labelFullname",
+              "hint": "i18n|hintFullname",
+              "match": "^[a-zA-Z0-9 ._-]{3,50}$",
+              "tip": "i18n|tipFullname",
+              "errmsg": "i18n|errmsgFullname"
+            },
+            {
+              "id": "x-baggage",
+              "label": "i18n|labelBaggage",
+              "hint": "i18n|hintBaggage",
+              "match": "^[a-zA-Z0-9]{8,10}$",
+              "tip": "i18n|tipBaggage",
+              "errmsg": "i18n|errmsgBaggage"
+            }
+          ],
+          "buttonLabel": "i18n|buttonLabelCall"
+        }
+      },
+      "connect": {
+        "callee": "anonymous@invalid.com",
+        "tokenized": false,
+        "callOptions": {
+          "from": "sip:anonymous@invalid.com",
+          "audio": true,
+          "video": true,
+          "videoOptions": {
+            "width": 480,
+            "height": 360
+          },
+          "customParameters": []
+        }
+      },
+      "preference": {
+        "microphone": true,
+        "camera": true,
+        "screenshare": true
+      }
+    },
+    "tokenized-without-landingpage": {
+      "landingPage": {
+        "enabled": false
+      },
+      "connect": {
+        "actgId": "tokenized-without-landingpage",
+        "tokenized": true,
+        "callOptions": {
+          "from": "sip:anonymous@invalid.com",
+          "audio": true,
+          "video": false,
+          "videoOptions": {
+            "width": 480,
+            "height": 360
+          },
+          "customParameters": []
+        }
+      },
+      "preference": {
+        "microphone": true,
+        "camera": false,
+        "screenshare": false
+      }
+    },
+    "tokenized-with-landingpage": {
+      "landingPage": {
+        "enabled": true,
+        "content": {
+          "title": "i18n|titleWelcome",
+          "description": "i18n|descriptionFillUpForm",
+          "inputField": [
+            {
+              "id": "x-fullname",
+              "label": "i18n|labelFullname",
+              "hint": "i18n|hintFullname",
+              "match": "^[a-zA-Z0-9 ._-]{3,50}$",
+              "tip": "i18n|tipFullname",
+              "errmsg": "i18n|errmsgFullname"
+            },
+            {
+              "id": "x-baggage",
+              "label": "i18n|labelBaggage",
+              "hint": "i18n|hintBaggage",
+              "match": "^[a-zA-Z0-9]{8,10}$",
+              "tip": "i18n|tipBaggage",
+              "errmsg": "i18n|errmsgBaggage"
+            }
+          ],
+          "buttonLabel": "i18n|buttonLabelCall"
+        }
+      },
+      "connect": {
+        "actgId": "tokenized-with-landingpage",
+        "tokenized": true,
+        "callOptions": {
+          "from": "sip:anonymous@invalid.com",
+          "audio": true,
+          "video": false,
+          "videoOptions": {
+            "width": 480,
+            "height": 360
+          },
+          "customParameters": []
+        }
+      },
+      "preference": {
+        "microphone": true,
+        "camera": true,
+        "screenshare": true
+      }
+    }
+  }
+}

@@ -1,0 +1,91 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Agent App</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+
+<header>AGENT APP</header>
+<body>
+    <div class="col-md-10 matter">
+        <div class="col-md-6">
+            <fieldset>
+                <legend>Select Lab:</legend>
+                <select name="lab" id="lab">
+                    <option value="KBS UAE">KBS UAE</option>
+                    <option value="KBS EMEA">KBS EMEA</option>
+                </select>
+            </fieldset>
+            </br>
+            
+            <fieldset>
+                <legend>Authenticate using your account information</legend>
+                <label>User Name:</label>
+                <input type="text" id="userEmail" placeholder="UserName" />
+                </p>
+                <label>Password:</label>
+                <input type="password" id="password" placeholder="Password" />
+            </fieldset>
+            </br> 
+            <fieldset>
+                <legend>Login/Subscribe To Call Service Websocket Channel</legend>
+                <button class="btn-sm" type="button" onclick="loginSubscribe()" id="loginBySubscribeBtn">Login/Subscribe</button>
+            </fieldset>     
+            </br> 
+
+            <!-- User input for responding to an incoming call. -->
+            <fieldset>
+                <legend>Respond to a Call</legend>
+                <button class="btn-sm" type="button" onclick="answerCall()">Answer Call</button>
+                <label>with video</label>
+                <input type="checkbox" id="answer-with-video" checked />
+                <button class="btn-sm" type="button" onclick="rejectCall()">Reject Call</button>
+            </fieldset>
+            </br>  
+            
+            <!-- User input for responding to an incoming call. -->
+            <fieldset>
+                <legend>Mid-Call Operations</legend>
+                <button class="btn-sm" type="button" id = 'HoldBtn' onclick="HoldCall()">Hold Call</button>
+                <button class="btn-sm" type="button" onclick="UnholdCall()">Unhold Call</button>
+                <button class="btn-sm" type="button" onclick="MuteCall()">Mute Call</button>
+                <button class="btn-sm" type="button" onclick="UnmuteCall()">Unmute Call</button>
+            <!-- User input for ending an ongoing call. -->
+            </fieldset>
+            </br> 
+            <fieldset>
+                <legend>End Call</legend>
+                <button class="btn-sm" type="button" onclick="endCall()">End Call</button>
+            </fieldset>
+            </br>
+            <fieldset>
+                <legend>Remote video: </legend>
+                <div id="remote-container" class="box"></div>
+            </fieldset>
+            </br>
+            <fieldset>
+                <legend>Local video:</legend>
+                <div id="local-container" class="box"></div>
+            </fieldset>
+        </div>
+        </br>
+        
+        <div class="col-md-6 terminal-wrapper">
+        <button class="btn-sm" type="button" onclick="clearLog()">Clear Log</button>
+        <!-- Log views. -->
+            <h4><b>Terminal</b></h4>
+            <div id="terminal"></div>
+        </div>
+    </div>
+    <script src="https://unpkg.com/@kandy-io/link-sdk/dist/kandy.js" crossorigin="anonymous"></script>
+    <script src="js/lab.js"></script>
+    <script type="text/javascript" src="etisalatConfig.json"></script>
+    <script type="text/javascript" src="emeaConfig.json"></script>
+    <script src="js/utility.js"></script>
+    <script src="js/app.js"></script>
+</body>
+
+</html>
